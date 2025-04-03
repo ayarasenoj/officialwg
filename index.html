@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weirdo Gang</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: #0d0d0d;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    header {
+      background: linear-gradient(to right, #facc15, #f43f5e, #3b82f6);
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      letter-spacing: 4px;
+      text-shadow: 0 0 15px #fff;
+    }
+
+    nav {
+      background: #000;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px;
+    }
+
+    nav a {
+      color: #facc15;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #f43f5e;
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .section-dark {
+      background-color: #1a1a1a;
+    }
+
+    .members img, .merch img {
+      width: 200px;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .merch {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    footer {
+      background: #000;
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>WEIRDO GANG</h1>
+    <p>Lights. Smoke. Bars. Welcome to the show.</p>
+  </header>
+
+  <nav>
+    <a href="#about">Meet the Gang</a>
+    <a href="#music">Music & Videos</a>
+    <a href="#tour">Shows</a>
+    <a href="#apparel">Apparel</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about" class="section-dark">
+    <h2>Meet the Gang</h2>
+    <div class="members">
+      <div>
+        <img src="your-image-ayara.jpg" alt="Ayara Senoj">
+        <p><strong>Ayara Senoj</strong></p>
+        <p>The lyrical light. Raw, real, and radiant.</p>
+      </div>
+      <div>
+        <img src="your-image-flip.jpg" alt="Fliparachee">
+        <p><strong>Fliparachee</strong></p>
+        <p>Unpredictable, unforgettable. A beast on stage.</p>
+      </div>
+      <div>
+        <img src="your-image-tk.jpg" alt="TK the Grate">
+        <p><strong>TK the Grate</strong></p>
+        <p>The grounding force. Vibe master. Lyrical truth.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="music">
+    <h2>Music & Videos</h2>
+    <p>Drop your latest heat right here.</p>
+    <!-- Embed YouTube/Spotify here -->
+  </section>
+
+  <section id="tour" class="section-dark">
+    <h2>Upcoming Shows</h2>
+    <p>Stay tuned for the next stop on the Weirdoverse tour.</p>
+  </section>
+
+  <section id="apparel">
+    <h2>Weirdo Gang Apparel</h2>
+    <div class="merch">
+      <div>
+        <img src="hoodie.jpg" alt="Hoodie">
+        <p><strong>Weirdo Flame Hoodie</strong><br>$40</p>
+      </div>
+      <div>
+        <img src="tee.jpg" alt="Tee">
+        <p><strong>Glow Logo Tee</strong><br>$25</p>
+      </div>
+      <!-- Add more products as needed -->
+    </div>
+  </section>
+
+  <section id="contact" class="section-dark">
+    <h2>Contact / Booking</h2>
+    <p>Email: <a href="mailto:booking@weirdogang.com">booking@weirdogang.com</a></p>
+    <p>Follow us on socials @weirdogang</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Official Weirdo Gang. All rights reserved.</p>
+  </footer>
+</body>
+</html>
