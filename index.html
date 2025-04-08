@@ -54,12 +54,28 @@
       background-color: #1a1a1a;
     }
 
-    .members img, .merch img {
-      width: 200px;
-      height: auto;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
+   .members {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0 40px;
+}
+
+.members > div {
+  flex: 1 1 30%;
+  text-align: center;
+}
+
+.members img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
 
     .merch {
       display: grid;
