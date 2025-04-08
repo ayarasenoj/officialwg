@@ -74,6 +74,30 @@
       padding: 20px;
       font-size: 0.9rem;
     }
+    .smoke-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://i.ibb.co/98Xm7yB/smoke-transparent.png');
+  background-size: cover;
+  background-repeat: repeat;
+  opacity: 0.06;
+  z-index: 0;
+  animation: smokeMove 30s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes smokeMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 1000px 1000px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -81,6 +105,8 @@
     <h1>WEIRDO GANG</h1>
     <p>Lights. Smoke. Bars. Welcome to the show.</p>
   </header>
+
+  <div class="smoke-overlay"></div>
 
   <nav>
     <a href="#about">Meet the Gang</a>
