@@ -56,26 +56,26 @@
 
    .members {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
+  align-items: flex-start;
   gap: 20px;
-  padding: 0 40px;
+  padding: 0 20px;
+  flex-wrap: nowrap;
 }
-
 .members > div {
-  flex: 1 1 30%;
+  flex: 1;
+  min-width: 0;
   text-align: center;
 }
 
 .members img {
   width: 100%;
-  height: auto;
-  max-height: 400px;
+  height: 100%;
+  max-height: 450px;
   object-fit: cover;
   border-radius: 12px;
 }
-
 
     .merch {
       display: grid;
