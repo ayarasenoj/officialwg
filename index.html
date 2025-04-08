@@ -14,17 +14,29 @@
     }
 
     header {
-      background: linear-gradient(to right, #facc15, #f43f5e, #3b82f6);
-      padding: 60px 20px;
-      text-align: center;
-    }
+  background: #990000; /* deep, bold red */
+  padding: 80px 20px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(255, 0, 0, 0.4);
+  border-bottom: 2px solid rgba(255, 0, 0, 0.2);
+}
+
 
     header h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3rem;
-      letter-spacing: 4px;
-      text-shadow: 0 0 15px #fff;
-    }
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.5rem;
+  letter-spacing: 6px;
+  text-shadow: 0 0 20px #ff0000;
+  color: #ffffff;
+}
+
+    header p {
+  font-size: 1.1rem;
+  color: #eee;
+  margin-top: 10px;
+  opacity: 0.9;
+}
+
 
     nav {
       background: #000;
@@ -34,16 +46,17 @@
       padding: 15px;
     }
 
-    nav a {
-      color: #facc15;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
     nav a:hover {
-      color: #f43f5e;
-    }
+  color: #ff3b3b;
+}
+
+h2 {
+  color: #ff3b3b;
+  border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
 
     section {
       padding: 60px 20px;
@@ -67,7 +80,11 @@
   flex: 1;
   min-width: 0;
   text-align: center;
+  .members > div p {
+  color: #ccc;
+  font-size: 0.95rem;
 }
+
 
 .members img {
   width: 100%;
