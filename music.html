@@ -6,7 +6,74 @@
   <title>Weirdo Gang | Music & Videos</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
   <style>
-    /* We’ll paste your styles here in the next step */
+    body {
+      margin: 0;
+      background: #0d0d0d;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    header {
+      background: linear-gradient(to right, #facc15, #f43f5e, #3b82f6);
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      letter-spacing: 4px;
+      text-shadow: 0 0 15px #fff;
+    }
+
+    nav {
+      background: #000;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px;
+    }
+
+    nav a {
+      color: #facc15;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #f43f5e;
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .section-dark {
+      background-color: #1a1a1a;
+    }
+
+    .members img, .merch img {
+      width: 200px;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .merch {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    footer {
+      background: #000;
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
