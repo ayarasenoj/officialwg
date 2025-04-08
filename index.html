@@ -200,6 +200,35 @@ h2 {
   filter: grayscale(10%);
 }
 
+    nav.poster-bar {
+  background: black;
+  height: 50px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.poster-buttons {
+  position: relative;
+  width: 100%;
+  height: 400px; /* or however tall you want this area */
+}
+
+.poster-buttons a {
+  position: absolute;
+  display: block;
+}
+
+.poster-buttons img {
+  width: 120px;
+  height: auto;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+  border-radius: 6px;
+}
+
+.poster-buttons img:hover {
+  transform: scale(1.05) rotate(1deg);
+}
 
 
   </style>
@@ -215,16 +244,21 @@ h2 {
   <header>
     <h1>WEIRDO GANG</h1>
     <p>Lights. Smoke. Bars. Welcome to the show.</p>
+    <div class="poster-buttons">
+      <a href="music.html" style="top: 20px; left: 10%;"><img src="..." /></a>
+<a href="index.html#about" style="top: 100px; right: 15%;"><img src="..." /></a>
+<a href="index.html#apparel" style="bottom: 10px; left: 40%;"><img src="..." /></a>
+      
+  <a href="music.html"><img src="images/poster1-placeholder.jpg" alt="Music Poster"></a>
+  <a href="index.html#about"><img src="images/poster2-placeholder.jpg" alt="Meet the Gang Poster"></a>
+  <a href="index.html#apparel"><img src="images/poster3-placeholder.jpg" alt="Apparel Poster"></a>
+</div>
+
   </header>
 
 
-  <nav>
-    <a href="#about">Meet the Gang</a>
-    <a href="music.html">Music & Videos</a>
-    <a href="#tour">Shows</a>
-    <a href="#apparel">Apparel</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <nav class="poster-bar"></nav>
+
 
   <section id="about" class="section-dark">
     <h2>Meet the Gang</h2>
