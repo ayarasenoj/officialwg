@@ -243,6 +243,27 @@ h2 {
   width: 380px;
 }
 
+    @media (max-width: 768px) {
+  .poster-buttons {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 60px 20px;
+  }
+
+  .poster-buttons a {
+    position: static !important;
+    transform: none !important;
+  }
+
+  .poster-buttons img {
+    width: 85%;
+    max-width: 340px;
+  }
+}
+
   </style>
 </head>
 <body>
