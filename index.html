@@ -221,16 +221,24 @@ h2 {
 }
 
 .poster-buttons img {
-  width: 120px;
+  width: 160px;
   height: auto;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
   border-radius: 6px;
+  box-shadow:
+    0 0 25px rgba(255, 255, 255, 0.05), /* fog aura */
+    0 8px 30px rgba(255, 0, 0, 0.08);   /* red glow */
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.05));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 .poster-buttons img:hover {
   transform: scale(1.05) rotate(1deg);
+  box-shadow:
+    0 0 35px rgba(255, 255, 255, 0.1),
+    0 12px 40px rgba(255, 0, 0, 0.15);
 }
+
 
 
   </style>
