@@ -244,6 +244,37 @@
   padding-bottom: 5px;
 }
 
+    .show-card {
+  position: relative;
+  width: 300px; /* Adjust as needed */
+  height: auto;
+  margin: 0 auto;
+}
+
+.show-card img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  transition: opacity 0.4s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.show-card img.back {
+  opacity: 0;
+  z-index: 1;
+}
+
+.show-card:hover img.back {
+  opacity: 1;
+}
+
+.show-card:hover img.front {
+  opacity: 0;
+}
+
+
   </style>
 </head>
 <body>
