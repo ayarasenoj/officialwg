@@ -204,37 +204,38 @@
     }
 
     @media (max-width: 768px) {
-      .poster-buttons {
-        position: static;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
-        padding: 60px 20px;
-        margin-top: 40px;
-        margin-bottom: 100px; /* ← pushes posters away from Meet the Gang */
-      }
+  .poster-buttons {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 60px 20px;
+    margin-top: 40px;
+    margin-bottom: 120px; /* ← pushes away from "Meet the Gang" */
+  }
 
-      .poster-buttons a {
-        position: static !important;
-        transform: none !important;
-      }
+  .poster-buttons a {
+    position: static !important;
+    transform: none !important;
+  }
 
-      .poster-buttons img {
-        width: 85%;
-        max-width: 340px;
-      }
+  .poster-buttons img {
+    width: 85%;
+    max-width: 340px;
+  }
 
-      header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-      #about {
-        padding-top: 60px; /* ← keeps gang banner from being too tight */
-      }
-    }
+  #about {
+    padding-top: 120px; /* ← pulls "Meet the Gang" further down */
+  }
+}
+
   </style>
 </head>
 <body>
