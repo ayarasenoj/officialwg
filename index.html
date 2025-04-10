@@ -14,49 +14,34 @@
     }
 
     header {
-  background: #990000; /* deep, bold red */
-  padding: 80px 20px;
-  text-align: center;
-  box-shadow: 0 4px 20px rgba(255, 0, 0, 0.4);
-  border-bottom: 2px solid rgba(255, 0, 0, 0.2);
-}
-
-
-    header h1 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 3.5rem;
-  letter-spacing: 6px;
-  text-shadow: 0 0 20px #ff0000;
-  color: #ffffff;
-}
-
-    header p {
-  font-size: 1.1rem;
-  color: #eee;
-  margin-top: 10px;
-  opacity: 0.9;
-}
-
-
-    nav {
-      background: #000;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 15px;
+      background: #990000;
+      padding: 80px 20px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(255, 0, 0, 0.4);
+      border-bottom: 2px solid rgba(255, 0, 0, 0.2);
     }
 
-    nav a:hover {
-  color: #ff3b3b;
-}
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5rem;
+      letter-spacing: 6px;
+      text-shadow: 0 0 20px #ff0000;
+      color: #ffffff;
+    }
 
-h2 {
-  color: #ff3b3b;
-  border-bottom: 1px solid rgba(255, 0, 0, 0.3);
-  display: inline-block;
-  padding-bottom: 5px;
-}
+    header p {
+      font-size: 1.1rem;
+      color: #eee;
+      margin-top: 10px;
+      opacity: 0.9;
+    }
 
+    nav.poster-bar {
+      background: black;
+      height: 50px;
+      width: 100%;
+      margin-bottom: 30px;
+    }
 
     section {
       padding: 60px 20px;
@@ -67,32 +52,35 @@ h2 {
       background-color: #1a1a1a;
     }
 
-   .members {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: stretch;
-  gap: 0; /* no space between images */
-  padding: 0;
-  margin: 0;
-}
+    .members {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: stretch;
+      gap: 0;
+      padding: 0;
+      margin: 0;
+    }
 
-.members > div {
-  flex: 1;
-  min-width: 0;
-  margin: 0;
-}
+    .members > div {
+      flex: 1;
+      min-width: 0;
+      margin: 0;
+    }
 
+    .members img {
+      width: 100%;
+      height: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 0;
+      display: block;
+    }
 
-
-.members img {
-  width: 100%;
-  height: 100%;
-  max-height: 500px;
-  object-fit: cover;
-  border-radius: 0;
-  display: block;
-}
+    .members img.ayara,
+    .members img.tk {
+      filter: grayscale(10%);
+    }
 
     .merch {
       display: grid;
@@ -101,14 +89,111 @@ h2 {
     }
 
     .merch img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
 
+    .smoke-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('images/smoke.png');
+      background-size: cover;
+      background-repeat: repeat;
+      opacity: 0.18;
+      z-index: 0;
+      animation: smokeMove 30s infinite linear;
+      pointer-events: none;
+    }
+
+    @keyframes smokeMove {
+      from { background-position: 0 0; }
+      to { background-position: 1000px 1000px; }
+    }
+
+    .concert-lights {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .moving-beams {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    .beam {
+      position: absolute;
+      top: -50%;
+      width: 8px;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.05);
+      transform: rotate(25deg);
+      animation: sweep 12s linear infinite;
+      filter: blur(20px);
+    }
+
+    .beam.delay {
+      left: 60%;
+      animation-delay: 6s;
+    }
+
+    .beam:first-child {
+      left: 30%;
+    }
+
+    @keyframes sweep {
+      from { transform: rotate(25deg) translateX(-100%); }
+      to { transform: rotate(25deg) translateX(200%); }
+    }
+
+    .poster-buttons {
+      position: relative;
+      height: 700px;
+      width: 100%;
+    }
+
+    .poster-buttons a {
+      position: absolute;
+    }
+
+    .poster-buttons img {
+      width: 280px;
+      height: auto;
+      border-radius: 6px;
+      box-shadow:
+        0 0 25px rgba(255, 255, 255, 0.05),
+        0 8px 30px rgba(255, 0, 0, 0.08);
+      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.05));
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .poster-buttons img:hover {
+      transform: scale(1.05) rotate(1deg);
+      box-shadow:
+        0 0 35px rgba(255, 255, 255, 0.1),
+        0 12px 40px rgba(255, 0, 0, 0.15);
+    }
+
+    .poster-large {
+      width: 380px;
+    }
 
     footer {
       background: #000;
@@ -117,203 +202,65 @@ h2 {
       padding: 20px;
       font-size: 0.9rem;
     }
-    .smoke-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('images/smoke.png');
-  background-size: cover;
-  background-repeat: repeat;
-  opacity: 0.18;
-  z-index: 0;
-  animation: smokeMove 30s infinite linear;
-  pointer-events: none;
-}
-
-@keyframes smokeMove {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 1000px 1000px;
-  }
-}
-
-    .concert-lights {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 10;
-}
-
-<div class="moving-beams">
-  <div class="beam"></div>
-  <div class="beam delay"></div>
-</div>
-
-
-.moving-beams {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 10;
-  overflow: hidden;
-}
-
-.beam {
-  position: absolute;
-  top: -50%;
-  width: 8px;
-  height: 200%;
-  background: rgba(255, 255, 255, 0.05);
-  transform: rotate(25deg);
-  animation: sweep 12s linear infinite;
-  filter: blur(20px);
-}
-
-.beam.delay {
-  left: 60%;
-  animation-delay: 6s;
-}
-
-.beam:first-child {
-  left: 30%;
-}
-
-@keyframes sweep {
-  from {
-    transform: rotate(25deg) translateX(-100%);
-  }
-  to {
-    transform: rotate(25deg) translateX(200%);
-  }
-}
-
-    .members img.ayara,
-.members img.tk {
-  filter: grayscale(10%);
-}
-
-    nav.poster-bar {
-  background: black;
-  height: 50px;
-  width: 100%;
-  margin-bottom: 30px;
-}
-
-.poster-buttons {
-  position: relative;
-  height: 700px; /* adjust height based on how tall you want the layout */
-  width: 100%;
-}
-
-.poster-buttons a {
-  position: absolute;
-}
-
-.poster-buttons img {
-  width: 280px;
-  height: auto;
-  border-radius: 6px;
-  box-shadow:
-    0 0 25px rgba(255, 255, 255, 0.05),
-    0 8px 30px rgba(255, 0, 0, 0.08);
-  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.05));
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-
-
-.poster-buttons img:hover {
-  transform: scale(1.05) rotate(1deg);
-  box-shadow:
-    0 0 35px rgba(255, 255, 255, 0.1),
-    0 12px 40px rgba(255, 0, 0, 0.15);
-}
-
-.poster-large {
-  width: 380px;
-}
 
     @media (max-width: 768px) {
-  .poster-buttons {
-    position: static;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-    padding: 60px 20px;
-  }
-      @media (max-width: 768px) {
-  .poster-buttons {
-    margin-top: 40px;
-  }
+      .poster-buttons {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        padding: 60px 20px;
+        margin-top: 40px;
+      }
 
-  header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-}
+      .poster-buttons a {
+        position: static !important;
+        transform: none !important;
+      }
 
+      .poster-buttons img {
+        width: 85%;
+        max-width: 340px;
+      }
 
-  .poster-buttons a {
-    position: static !important;
-    transform: none !important;
-  }
-
-  .poster-buttons img {
-    width: 85%;
-    max-width: 340px;
-  }
-}
-
+      header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
   </style>
 </head>
 <body>
-    <div class="concert-lights">
-  <div class="light white"></div>
-  <div class="light white"></div>
-  <div class="light white"></div>
-</div>
+
+  <div class="concert-lights">
+    <div class="light white"></div>
+    <div class="light white"></div>
+    <div class="light white"></div>
+  </div>
   <div class="smoke-overlay"></div>
 
   <header>
     <h1>WEIRDO GANG</h1>
-  <p>Lights. Smoke. Bars. Welcome to the show.</p>
-  <nav class="poster-bar"></nav>
+    <p>Lights. Smoke. Bars. Welcome to the show.</p>
+    <nav class="poster-bar"></nav>
 
-  <div class="poster-buttons">
-  <a href="music.html" style="top: 40px; right: 10%;">
-  <img src="images/music-poster.png" alt="Music & Videos Poster" class="poster-large" />
-</a>
-    
-  <a href="index.html#tour" style="top: 40px; left: 12%;">
-    <img src="images/shows-poster.png" alt="Upcoming Shows Poster" />
-  </a>
-
-  <a href="index.html#about" style="bottom: 20px; left: 12%;">
-    <img src="images/gang-poster.png" alt="Meet the Gang Poster" />
-  </a>
-
-  <a href="index.html#apparel" style="bottom: 40px; right: 10%;">
-    <img src="images/apparel.png" alt="Weirdo Gang Apparel Poster" />
-  </a>
-</div>
-
-</header>
-
-
-  <nav class="poster-bar"></nav>
-
+    <div class="poster-buttons">
+      <a href="music.html" style="top: 40px; right: 10%;">
+        <img src="images/music-poster.png" alt="Music & Videos Poster" class="poster-large" />
+      </a>
+      <a href="index.html#tour" style="top: 40px; left: 12%;">
+        <img src="images/shows-poster.png" alt="Upcoming Shows Poster" />
+      </a>
+      <a href="index.html#about" style="bottom: 20px; left: 12%;">
+        <img src="images/gang-poster.png" alt="Meet the Gang Poster" />
+      </a>
+      <a href="index.html#apparel" style="bottom: 40px; right: 10%;">
+        <img src="images/apparel.png" alt="Weirdo Gang Apparel Poster" />
+      </a>
+    </div>
+  </header>
 
   <section id="about" class="section-dark">
     <h2>Meet the Gang</h2>
@@ -339,7 +286,6 @@ h2 {
   <section id="music">
     <h2>Music & Videos</h2>
     <p>Drop your latest heat right here.</p>
-    <!-- Embed YouTube/Spotify here -->
   </section>
 
   <section id="tour" class="section-dark">
@@ -370,5 +316,6 @@ h2 {
   <footer>
     <p>&copy; 2025 Official Weirdo Gang. All rights reserved.</p>
   </footer>
+
 </body>
 </html>
