@@ -156,6 +156,55 @@
   100% { background-position: center top; }
 }
 
+    .video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  padding-top: 25px;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+    body {
+  overflow-x: hidden;
+}
+    @media (max-width: 768px) {
+  #video-intro img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+  #video-intro .smoke-overlay {
+    background-size: contain;
+  }
+
+  .video-wrapper {
+    padding-top: 25px;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+  }
+
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
   </style>
 </head>
 <body>
@@ -171,14 +220,14 @@
     <p>Drop your latest heat right here.</p>
 
     <div class="video-wrapper">
-      <iframe width="560" height="315"
-        src="https://www.youtube.com/embed/LPKROGnU-As?si=jePJSSjYNm-fXYfq"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
-    </div>
+  <iframe src="https://www.youtube.com/embed/LPKROGnU-As?si=jePJSSjYNm-fXYfq"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+  </iframe>
+</div>
+
   </section>
 </div>
 
