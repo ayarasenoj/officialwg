@@ -48,12 +48,16 @@
       text-align: center;
     }
 
-  
-.section-dark {
-  background-color: #1a1a1a;
-}
+    .section-dark {
+      background-color: #1a1a1a;
+    }
 
-
+    #tour {
+      background-color: #1a1a1a;
+      padding: 100px 20px 140px;
+      position: relative;
+      z-index: 1;
+    }
 
     .members {
       display: flex;
@@ -206,83 +210,77 @@
       font-size: 0.9rem;
     }
 
-    @media (max-width: 768px) {
-  .poster-buttons {
-    position: static;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-    padding: 20px;
-  }
-
-  .poster-buttons a {
-    position: static !important;
-    transform: none !important;
-    top: auto !important;
-    bottom: auto !important;
-    left: auto !important;
-    right: auto !important;
-    margin: 0 !important;
-  }
-
-  .poster-buttons img {
-    width: 85%;
-    max-width: 340px;
-  }
-
-      header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 60px;
-    padding-bottom: 560px; 
-  }
-}
-
-  h2 {
-  color: #ff3b3b;
-  border-bottom: 1px solid rgba(255, 0, 0, 0.3);
-  display: inline-block;
-  padding-bottom: 5px;
-}
+    h2 {
+      color: #ff3b3b;
+      border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+      display: inline-block;
+      padding-bottom: 5px;
+    }
 
     .show-card {
-  position: relative;
-  width: 300px;
-  height: auto;
-  margin: 0 auto; /* centers it horizontally */
-}
+      position: relative;
+      width: 320px;
+      margin: 0 auto;
+      height: auto;
+      z-index: 2;
+    }
 
+    .show-card img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+      transition: opacity 0.4s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
 
-.show-card img {
-  width: 100%;
-  display: block;
-  border-radius: 10px;
-  transition: opacity 0.4s ease;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+    .show-card img.back {
+      opacity: 0;
+      z-index: 1;
+    }
 
-.show-card img.back {
-  opacity: 0;
-  z-index: 1;
-}
+    .show-card:hover img.back {
+      opacity: 1;
+    }
 
-.show-card:hover img.back {
-  opacity: 1;
-}
+    .show-card:hover img.front {
+      opacity: 0;
+    }
 
-.show-card:hover img.front {
-  opacity: 0;
-}
+    @media (max-width: 768px) {
+      .poster-buttons {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        padding: 20px;
+      }
 
-    #tour {
-  padding-top: 80px;
-  padding-bottom: 80px;
-}
+      .poster-buttons a {
+        position: static !important;
+        transform: none !important;
+        top: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        margin: 0 !important;
+      }
 
+      .poster-buttons img {
+        width: 85%;
+        max-width: 340px;
+      }
+
+      header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 60px;
+        padding-bottom: 560px; 
+      }
+    }
 
   </style>
 </head>
@@ -342,14 +340,13 @@
     <p>Drop your latest heat right here.</p>
   </section>
 
-  <section id="tour" class="section-dark section-tour">
+  <section id="tour" class="section-dark">
     <h2>Upcoming Shows</h2>
     <p>Stay tuned for the next stop on the Weirdoverse tour.</p>
     <div class="show-card">
-  <img class="front" src="images/flyer-front.JPG" alt="Upcoming Show Flyer Front">
-  <img class="back" src="images/flyer-back.JPG" alt="Upcoming Show Flyer Back">
-</div>
-
+      <img class="front" src="images/flyer-front.JPG" alt="Upcoming Show Flyer Front">
+      <img class="back" src="images/flyer-back.JPG" alt="Upcoming Show Flyer Back">
+    </div>
   </section>
 
   <section id="apparel">
