@@ -123,6 +123,11 @@
     visibility: hidden;
   }
 }
+    #main-content {
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
 
   </style>
 </head>
@@ -172,9 +177,17 @@
 <script>
   setTimeout(() => {
     document.getElementById('video-intro').classList.add('fade-out');
-    document.getElementById('main-content').style.display = 'block';
-  }, 4500); // wait 4.5 seconds
+
+    const main = document.getElementById('main-content');
+    main.style.display = 'block';
+    
+    // Delay a little to allow it to load, then fade in
+    setTimeout(() => {
+      main.style.opacity = 1;
+    }, 100);
+  }, 4500);
 </script>
+
 
 </body>
 </html>
