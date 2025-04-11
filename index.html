@@ -22,12 +22,17 @@
     }
 
     header h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3.5rem;
-      letter-spacing: 6px;
-      text-shadow: 0 0 20px #ff0000;
-      color: #ffffff;
-    }
+  font-family: 'Orbitron', sans-serif;
+  font-size: 4rem; /* bump it up from 3.5 */
+  letter-spacing: 6px;
+  text-shadow:
+    0 0 15px #ffffff,
+    0 0 25px #ffffff,
+    0 0 35px #ff0000;
+  color: #ffffff;
+  animation: flicker 3s infinite;
+}
+
 
     header p {
       font-size: 1.1rem;
@@ -281,6 +286,19 @@
         padding-bottom: 560px; 
       }
     }
+
+    @keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.85;
+  }
+  21%, 56% {
+    opacity: 0.6;
+  }
+}
+
 
   </style>
 </head>
