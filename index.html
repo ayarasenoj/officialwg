@@ -315,6 +315,49 @@
   }
 }
 
+    /* Hide poster buttons on desktop */
+.mobile-only {
+  display: none;
+}
+
+/* Show nav bar on desktop only */
+.desktop-nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 15px;
+  background: #000;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+}
+
+.desktop-nav a {
+  color: #990000;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.desktop-nav a:hover {
+  color: #f43f5e;
+}
+
+/* Show poster buttons & hide nav bar on mobile */
+@media (max-width: 768px) {
+  .mobile-only {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 20px;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+}
+
 
   </style>
 </head>
@@ -328,12 +371,20 @@
   <div class="smoke-overlay"></div>
 
   <header>
+    <nav class="desktop-nav">
+  <a href="index.html">Home</a>
+  <a href="music.html">Music & Videos</a>
+  <a href="index.html#tour">Shows</a>
+  <a href="index.html#apparel">Apparel</a>
+  <a href="index.html#contact">Contact</a>
+</nav>
+
     <h1>WEIRDO GANG</h1>
     <p>Lights. Smoke. Bars. Welcome to the show.</p>
     <nav class="poster-bar"></nav>
 
-    <div class="poster-buttons">
-     
+    <div class="poster-buttons mobile-only">
+
       <a href="music.html" style="top: 40px; right: 10%;">
         <img src="images/music-poster.png" alt="Music & Videos Poster" class="poster-large" />
       </a>
