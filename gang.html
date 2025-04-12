@@ -2,20 +2,146 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Meet the Gang</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
   <style>
     body {
+      margin: 0;
       background: #0d0d0d;
-      color: white;
       font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1 {
       text-align: center;
-      padding: 100px 20px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      color: white;
+      margin-top: 40px;
+      text-shadow: 0 0 12px #fff;
+    }
+
+    .carousel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      gap: 40px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel img {
+      width: 220px;
+      height: auto;
+      transition: all 0.5s ease;
+      opacity: 0.4;
+      filter: grayscale(100%);
+      transform: scale(0.9);
+    }
+
+    .carousel img.active {
+      width: 300px;
+      opacity: 1;
+      filter: drop-shadow(0 0 25px white);
+      transform: scale(1.15);
+      z-index: 2;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      padding: 10px 20px;
+      cursor: pointer;
+      z-index: 5;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .nav-left {
+      left: 10px;
+    }
+
+    .nav-right {
+      right: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .carousel {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .carousel img {
+        width: 180px;
+        transform: scale(0.85);
+      }
+
+      .carousel img.active {
+        width: 250px;
+        transform: scale(1.1);
+      }
+
+      .nav-btn {
+        top: unset;
+        bottom: 20px;
+        transform: none;
+        font-size: 1.5rem;
+      }
+
+      .nav-left {
+        left: 20%;
+      }
+
+      .nav-right {
+        right: 20%;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Meet the Gang</h1>
-  <p>This page is under construction, but the gang is coming soon 🔥</p>
+
+<h1>Select Your Fighter</h1>
+
+<div class="carousel">
+  <button class="nav-btn nav-left" onclick="rotateLeft()">&#8678;</button>
+
+  <img src="images/senoj-select.png" alt="Ayara Senoj" class="active">
+  <img src="images/flip-select.png" alt="Fliparachee">
+  <img src="images/tk-select.png" alt="TK the Grate">
+
+  <button class="nav-btn nav-right" onclick="rotateRight()">&#8680;</button>
+</div>
+
+<script>
+  let current = 0;
+  const images = document.querySelectorAll('.carousel img');
+
+  function updateCarousel() {
+    images.forEach((img, index) => {
+      img.classList.remove('active');
+    });
+    images[current].classList.add('active');
+  }
+
+  function rotateLeft() {
+    current = (current - 1 + images.length) % images.length;
+    updateCarousel();
+  }
+
+  function rotateRight() {
+    current = (current + 1) % images.length;
+    updateCarousel();
+  }
+</script>
+
 </body>
 </html>
