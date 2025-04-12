@@ -30,23 +30,42 @@
       gap: 40px;
       overflow: hidden;
       position: relative;
+      flex-wrap: wrap;
     }
 
-    .carousel img {
+    .carousel .card {
       width: 220px;
-      height: auto;
+      text-align: center;
       transition: all 0.5s ease;
       opacity: 0.4;
       filter: grayscale(100%);
       transform: scale(0.9);
+      color: white;
     }
 
-    .carousel img.active {
+    .carousel .card.active {
       width: 300px;
       opacity: 1;
       filter: drop-shadow(0 0 25px white);
       transform: scale(1.15);
       z-index: 2;
+    }
+
+    .carousel .card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .stats {
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+
+    .tagline {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+      color: #f43f5e;
     }
 
     .nav-btn {
@@ -78,14 +97,16 @@
       .carousel {
         flex-direction: column;
         gap: 20px;
+        height: auto;
+        padding: 40px 20px;
       }
 
-      .carousel img {
+      .carousel .card {
         width: 180px;
         transform: scale(0.85);
       }
 
-      .carousel img.active {
+      .carousel .card.active {
         width: 250px;
         transform: scale(1.1);
       }
@@ -109,152 +130,62 @@
 </head>
 <body>
 
-<h1>Select Your Artist</h1>
-
-  <section id="gang-select">
-  <div class="character-card">
-    <img src="images/senoj-select.png" alt="Senoj">
-    <div class="card-content">
-      <h3>Senoj – "Barzilla"</h3>
-      <p class="quote">
-        “Call me the Yellow Ranger again and I’m airing this b*tch out.”
-      </p>
-      <div class="stats">
-        <p><strong>Style:</strong> Versatile Kamikaze</p>
-        <p><strong>Special Move:</strong> F*CK YOUR STAGE</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="character-card">
-    <img src="images/flip-select.png" alt="Fliparachee">
-    <div class="card-content">
-      <h3>Fliparachee – "The Heart aka Black Sora"</h3>
-      <p class="quote">
-        “Keyblade on me, but the real weapon’s the vibe.”
-      </p>
-      <div class="stats">
-        <p><strong>Style:</strong> Unpredictable Energy Bender</p>
-        <p><strong>Special Move:</strong> Keyblade Swing</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="character-card">
-    <img src="images/tk-select.png" alt="TK the Grate">
-    <div class="card-content">
-      <h3>TK the Grate – "The Mind"</h3>
-      <p class="quote">
-        “He said he’s the best rapper alive. That’s cute.” – Senoj
-      </p>
-      <div class="stats">
-        <p><strong>Style:</strong> Calculated Greatness</p>
-        <p><strong>Special Move:</strong> Boss Level</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<style>
-#gang-select {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
-  padding: 80px 20px;
-  gap: 40px;
-  flex-wrap: wrap;
-  background-color: #0d0d0d;
-}
-
-.character-card {
-  position: relative;
-  text-align: center;
-  width: 250px;
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-
-.character-card img {
-  width: 100%;
-  border-radius: 12px;
-  transition: transform 0.4s ease, filter 0.4s ease;
-  box-shadow: 0 0 10px rgba(255,255,255,0.1);
-}
-
-.character-card:hover img {
-  transform: scale(1.1);
-  filter: brightness(1.3) drop-shadow(0 0 25px white);
-}
-
-.card-content {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 15px;
-  border-radius: 8px;
-  margin-top: 15px;
-  transition: background 0.3s ease;
-}
-
-.card-content h3 {
-  margin: 0 0 10px;
-  font-size: 1.2rem;
-  color: #ff3b3b;
-}
-
-.card-content .quote {
-  font-style: italic;
-  font-size: 0.9rem;
-  color: #ccc;
-  margin-bottom: 10px;
-}
-
-.stats p {
-  margin: 5px 0;
-  font-size: 0.85rem;
-  color: #eee;
-}
-
-@media (max-width: 768px) {
-  #gang-select {
-    flex-direction: column;
-    align-items: center;
-  }
-  .character-card {
-    width: 80%;
-  }
-}
-</style>
-
-
-
-
+<h1>Select Your Fighter</h1>
 
 <div class="carousel">
   <button class="nav-btn nav-left" onclick="rotateLeft()">&#8678;</button>
 
-  <img src="images/senoj-select.png" alt="Ayara Senoj" class="active">
-  <img src="images/flip-select.png" alt="Fliparachee">
-  <img src="images/tk-select.png" alt="TK the Grate">
+  <div class="card active">
+    <img src="images/senoj-select.png" alt="Ayara Senoj">
+    <div class="stats">
+      <div class="tagline">Barzilla</div>
+      <p><em>"Don't call me the Yellow Ranger unless you're ready to get flamed."</em></p>
+      <p><strong>Style:</strong> Versatile Kamikaze</p>
+      <p><strong>Special Move:</strong> F*CK YOUR STAGE</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="images/flip-select.png" alt="Fliparachee">
+    <div class="stats">
+      <div class="tagline">The Heart</div>
+      <p><em>"I don’t ground the gang... I inspire it."</em></p>
+      <p><strong>Style:</strong> Unpredictable Nerdcore Maverick</p>
+      <p><strong>Special Move:</strong> Keyblade Chronicles</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="images/tk-select.png" alt="TK the Grate">
+    <div class="stats">
+      <div class="tagline">The Mind</div>
+      <p><em>"It's cute he thinks he's the best rapper alive."</em></p>
+      <p><strong>Style:</strong> Calculated Evolutionary</p>
+      <p><strong>Special Move:</strong> Soul Dissector</p>
+    </div>
+  </div>
 
   <button class="nav-btn nav-right" onclick="rotateRight()">&#8680;</button>
 </div>
 
 <script>
   let current = 0;
-  const images = document.querySelectorAll('.carousel img');
+  const cards = document.querySelectorAll('.carousel .card');
 
   function updateCarousel() {
-    images.forEach((img, index) => {
-      img.classList.remove('active');
+    cards.forEach((card, index) => {
+      card.classList.remove('active');
     });
-    images[current].classList.add('active');
+    cards[current].classList.add('active');
   }
 
   function rotateLeft() {
-    current = (current - 1 + images.length) % images.length;
+    current = (current - 1 + cards.length) % cards.length;
     updateCarousel();
   }
 
   function rotateRight() {
-    current = (current + 1) % images.length;
+    current = (current + 1) % cards.length;
     updateCarousel();
   }
 </script>
