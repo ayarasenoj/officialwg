@@ -358,6 +358,25 @@
   }
 }
 
+    .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 25px 0 10px;
+}
+
+.social-icons img {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2);
+  filter: brightness(1.2);
+}
+
 
   </style>
 </head>
@@ -382,6 +401,15 @@
     <h1>WEIRDO GANG</h1>
     <p>Lights. Smoke. Bars. Welcome to the show.</p>
     <nav class="poster-bar"></nav>
+
+    <div class="social-icons">
+  <a href="https://instagram.com/theofficialweirdogang/" target="_blank"><img src="images/ig-icon.png" alt="Instagram"></a>
+  <a href="https://facebook.com/p/Weirdo-Gang-100092041111857/" target="_blank"><img src="images/facebook-icon.png" alt="Facebook"></a>
+  <a href="https://youtube.com/@TheOfficialWeirdoGang" target="_blank"><img src="images/youtube-icon.png" alt="YouTube"></a>
+  <a href="https://music.apple.com/us/artist/weirdo-gang/1707622143" target="_blank"><img src="images/applemusic-icon.png" alt="Apple Music"></a>
+  <a href="https://open.spotify.com/artist/1mOX3aTOjDVKePTIhYLJF2" target="_blank"><img src="images/spotify-icon.png" alt="Spotify"></a>
+</div>
+
 
     <div class="poster-buttons mobile-only">
 
