@@ -82,12 +82,15 @@
 
 .members img {
   width: 100%;
-  height: auto; /* This lets image scale naturally */
-  max-height: 100vh; /* Limits height to screen but shows full image */
-  object-fit: cover; /* Keeps the edge-to-edge banner vibe */
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
   border-radius: 0;
   display: block;
+  aspect-ratio: 3 / 4; /* This ensures all images follow same proportions */
+  max-height: 500px;   /* Adjust this value to fit your layout nicely */
 }
+
 
 
     .members img.ayara,
