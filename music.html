@@ -176,6 +176,101 @@
 
 }
 
+    .carousel-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 40px auto;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease;
+  gap: 20px;
+}
+
+.video-slide {
+  min-width: 300px;
+  position: relative;
+  cursor: pointer;
+  filter: brightness(70%);
+  transition: transform 0.3s, filter 0.3s, box-shadow 0.3s;
+}
+
+.video-slide img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.video-slide:hover {
+  filter: brightness(120%);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #f43f5e;
+  z-index: 2;
+}
+
+.video-slide .overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  color: white;
+  text-shadow: 0 0 5px black;
+}
+
+.arrow {
+  position: absolute;
+  top: 40%;
+  font-size: 2rem;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 3;
+  padding: 0 10px;
+}
+
+.arrow.left {
+  left: 0;
+}
+
+.arrow.right {
+  right: 0;
+}
+
+#video-modal {
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  position: relative;
+  width: 80%;
+  max-width: 800px;
+}
+
+.modal-content iframe {
+  width: 100%;
+  height: 450px;
+  border-radius: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: -30px;
+  right: 0;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
   </style>
 </head>
 <body>
@@ -184,7 +279,52 @@
   <img src="images/video-intro.png" alt="Weirdo Gang Intro Image">
   <div class="smoke-overlay"></div>
 </div>
-  
+  <section id="video-carousel" class="section-dark">
+  <h2>Music & Videos</h2>
+  <div class="carousel-container">
+    <button class="arrow left">&#10094;</button>
+
+    <div class="carousel-track">
+      <!-- Video 1 -->
+      <div class="video-slide" data-video="https://www.youtube.com/embed/Itdk8PXnX64?si=du8OB3D7vE9WTtFE">
+        <img src="images/bowchicka.png" alt="Song Title 1">
+        <div class="overlay">
+          <h3>Bow Chicka Wow Wow ft. Merc</h3>
+          <p>by Fliparachee</p>
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="video-slide" data-video="https://www.youtube.com/embed/LLGlf5N87cw?si=d5mYRADEfY3Afflx">
+        <img src="images/mytype.png" alt="Song Title 2">
+        <div class="overlay">
+          <h3>My Type ft. Fliparachee</h3>
+          <p>by TK the Grate</p>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="video-slide" data-video="https://www.youtube.com/embed/wy0Yyk5J5i8?si=fdb3SCdTRzik_ZY4">
+        <img src="images/downbad.png" alt="Song Title 3">
+        <div class="overlay">
+          <h3>Down Bad Freestyle (She-Mix)</h3>
+          <p>by Ayara Senoj</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="arrow right">&#10095;</button>
+  </div>
+</section>
+
+<!-- Modal for YouTube video playback -->
+<div id="video-modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <iframe id="modal-video" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+
 <div id="main-content" style="display: none;">
 
 
@@ -206,6 +346,48 @@
   }, 4500);
 </script>
 
+<script>
+  const track = document.querySelector('.carousel-track');
+  const slides = document.querySelectorAll('.video-slide');
+  const prev = document.querySelector('.arrow.left');
+  const next = document.querySelector('.arrow.right');
+  let index = 0;
+
+  next.addEventListener('click', () => {
+    if (index < slides.length - 3) index++;
+    track.style.transform = `translateX(-${index * (slides[0].offsetWidth + 20)}px)`;
+  });
+
+  prev.addEventListener('click', () => {
+    if (index > 0) index--;
+    track.style.transform = `translateX(-${index * (slides[0].offsetWidth + 20)}px)`;
+  });
+
+  // Modal setup
+  const modal = document.getElementById('video-modal');
+  const modalVideo = document.getElementById('modal-video');
+  const closeBtn = document.querySelector('.close-btn');
+
+  slides.forEach(slide => {
+    slide.addEventListener('click', () => {
+      const videoURL = slide.getAttribute('data-video') + '?autoplay=1';
+      modalVideo.src = videoURL;
+      modal.style.display = 'flex';
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    modalVideo.src = '';
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target == modal) {
+      modal.style.display = 'none';
+      modalVideo.src = '';
+    }
+  });
+</script>
 
 </body>
 </html>
