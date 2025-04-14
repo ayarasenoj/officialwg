@@ -11,7 +11,6 @@
       background: #0d0d0d;
       color: white;
       font-family: 'Montserrat', sans-serif;
-      overflow-x: hidden;
     }
 
     header {
@@ -31,7 +30,6 @@
       background: #000;
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 30px;
       padding: 15px;
     }
@@ -47,33 +45,227 @@
       color: #f43f5e;
     }
 
-    #video-intro {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: black;
-      z-index: 9999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
+    section {
+      padding: 60px 20px;
+      text-align: center;
     }
 
-    #video-intro img {
-      width: 100%;
+    .section-dark {
+      background-color: #1a1a1a;
+    }
+
+    .members img, .merch img {
+      width: 200px;
       height: auto;
-      max-height: 95vh;
-      object-fit: contain;
+      border-radius: 10px;
+      margin-bottom: 10px;
     }
 
-    #video-intro .smoke-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('images/smoke.png') repeat;
-      background-size: cover;
-      opacity:
+    .merch {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    footer {
+      background: #000;
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    #video-intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#video-intro img {
+  width: 100%;
+  height: auto;
+  max-height: 95vh;
+  object-fit: contain;
+}
+
+
+#video-intro .smoke-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('images/smoke.png') repeat;
+  background-size: cover;
+  opacity: 0;
+  animation: smokeIn 4s forwards ease-in;
+}
+
+@keyframes smokeIn {
+  0% {
+    opacity: 0;
+    background-position: center bottom;
+  }
+  50% {
+    opacity: 0.6;
+    background-position: center center;
+  }
+  100% {
+    opacity: 1;
+    background-position: center top;
+  }
+}
+
+
+.fade-out {
+  animation: fadeOut 2s forwards ease-out;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+    #main-content {
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+#video-intro .smoke-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('images/smoke.png') repeat;
+  background-size: cover;
+  opacity: 0;
+  animation: smokeIn 4s forwards ease-in,
+             smokeRise 15s linear infinite;
+}
+
+@keyframes smokeRise {
+  0% { background-position: center bottom; }
+  100% { background-position: center top; }
+}
+
+    .video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  padding-top: 25px;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+    body {
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  #video-intro img {
+    content: url('images/intro-mobile.png');
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;
+  }
+
+  #video-intro .smoke-overlay {
+    background-size: contain;
+  }
+
+  .video-wrapper {
+    padding-top: 25px;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+  }
+
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+  </style>
+</head>
+<body>
+<!-- VIDEO INTRO ANIMATION -->
+<div id="video-intro">
+  <img src="images/video-intro.png" alt="Weirdo Gang Intro Image">
+  <div class="smoke-overlay"></div>
+</div>
+  
+<div id="main-content" style="display: none;">
+  <section id="music">
+    <h2>Music & Videos</h2>
+    <p>WG Hotboyz RECAP</p>
+
+    <div class="video-wrapper">
+  <iframe src="https://www.youtube.com/embed/LPKROGnU-As?si=jePJSSjYNm-fXYfq"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+  </iframe>
+</div>
+
+  </section>
+</div>
+
+  <nav>
+  <a href="index.html">Home</a>
+  <a href="music.html">Music & Videos</a>
+  <a href="#tour">Shows</a>
+  <a href="https://weirdogang.net" target="_blank">Apparel</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+
+  <section id="music">
+    <p>Weirdo Gang 4/20 RECAP</p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/r_n3T-SLsUM?si=EpvzGSwK8SyHfyKM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </section>
+
+  <footer>
+  <p>&copy; 2025 Official Weirdo Gang. All rights reserved.</p>
+</footer>
+
+<script>
+  setTimeout(() => {
+    document.getElementById('video-intro').classList.add('fade-out');
+
+    const main = document.getElementById('main-content');
+    main.style.display = 'block';
+    
+    // Delay a little to allow it to load, then fade in
+    setTimeout(() => {
+      main.style.opacity = 1;
+    }, 100);
+  }, 4500);
+</script>
+
+
+</body>
+</html>
