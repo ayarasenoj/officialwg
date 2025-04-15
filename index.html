@@ -532,12 +532,19 @@
     <section id="newsletter" class="section-dark">
   <h2>Join the Weirdo Gang Newsletter</h2>
   <p>Be the first to hear about new drops, shows, and weirdness.</p>
-
-  <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="newsletter-form">
+      
+<form id="newsletter-form" class="newsletter-form">
+  <form action="https://formspree.io/f/meoadvab" method="POST" class="newsletter-form">
     <input type="text" name="name" placeholder="Your Name" required />
     <input type="email" name="email" placeholder="Your Email" required />
     <button type="submit">Sign Me Up</button>
   </form>
+
+  <div id="thank-you-message" style="display: none; margin-top: 20px;">
+  <h3>Thanks for joining the Weirdo Gang Newsletter!</h3>
+  <p>We’ll keep you in the loop with all the weirdest updates 😎</p>
+</div>
+  
 </section>
 
     <p>Email: <a href="mailto:booktheweirdos@weirdogang.net">booktheweirdos@weirdogang.net</a></p>
@@ -547,6 +554,37 @@
   <footer>
     <p>&copy; 2025 Official Weirdo Gang. All rights reserved.</p>
   </footer>
+
+
+  <script>
+  const form = document.getElementById('newsletter-form');
+  const thankYou = document.getElementById('thank-you-message');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Stop default form submission
+
+    const formData = new FormData(form);
+    const action = "https://formspree.io/f/abcd1234"; // 🔁 Replace with YOUR Formspree endpoint
+
+    try {
+      const response = await fetch(action, {
+        method: "POST",
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        form.style.display = "none";
+        thankYou.style.display = "block";
+      } else {
+        alert("Oops! Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("There was a network error. Please try again.");
+    }
+  });
+</script>
 
 </body>
 </html>
