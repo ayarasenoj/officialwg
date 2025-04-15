@@ -394,6 +394,46 @@
   background-color: #1a1a1a;
 }
 
+    .newsletter-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+  margin: 30px auto;
+  gap: 15px;
+}
+
+.newsletter-form input,
+.newsletter-form button {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+}
+
+.newsletter-form input {
+  background-color: #222;
+  color: #fff;
+}
+
+.newsletter-form input::placeholder {
+  color: #aaa;
+}
+
+.newsletter-form button {
+  background: linear-gradient(to right, #990000, #f43f5e);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  background: linear-gradient(to right, #f43f5e, #3b82f6);
+}
+
 
   </style>
 </head>
@@ -488,6 +528,18 @@
 
   <section id="contact" class="section-dark">
     <h2>Contact / Booking</h2>
+
+    <section id="newsletter" class="section-dark">
+  <h2>Join the Weirdo Gang Newsletter</h2>
+  <p>Be the first to hear about new drops, shows, and weirdness.</p>
+
+  <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="newsletter-form">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <button type="submit">Sign Me Up</button>
+  </form>
+</section>
+
     <p>Email: <a href="mailto:booktheweirdos@weirdogang.net">booktheweirdos@weirdogang.net</a></p>
     <p>Follow us on socials @theofficialweirdogang</p>
   </section>
