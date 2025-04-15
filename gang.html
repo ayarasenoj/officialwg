@@ -27,34 +27,33 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      gap: 40px;
       overflow: hidden;
       position: relative;
-      z-index: 1;
-      flex-wrap: nowrap;
+      flex-direction: column;
     }
 
-    .carousel .card {
-      width: 220px;
+    .card {
+      width: 300px;
+      max-width: 90%;
       text-align: center;
-      transition: all 0.5s ease;
-      opacity: 0.4;
+      opacity: 0;
       filter: grayscale(100%);
       transform: scale(0.9);
       color: white;
-      position: relative;
-      flex-shrink: 0;
+      position: absolute;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      z-index: 0;
     }
 
-    .carousel .card.active {
-      width: 300px;
+    .card.active {
       opacity: 1;
       filter: drop-shadow(0 0 25px white);
-      transform: scale(1.15);
-      z-index: 2;
+      transform: scale(1.05);
+      z-index: 1;
+      position: relative;
     }
 
-    .carousel .card img {
+    .card img {
       width: 100%;
       height: auto;
     }
@@ -71,29 +70,20 @@
       color: #f43f5e;
     }
 
-    .nav-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.1);
+    .next-btn {
+      margin-top: 20px;
+      background: linear-gradient(to right, #990000, #f43f5e);
       border: none;
       color: white;
-      font-size: 2rem;
+      font-size: 1.2rem;
       padding: 10px 20px;
+      border-radius: 8px;
       cursor: pointer;
-      z-index: 5;
+      z-index: 2;
     }
 
-    .nav-btn:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .nav-left {
-      left: 10px;
-    }
-
-    .nav-right {
-      right: 10px;
+    .next-btn:hover {
+      background: linear-gradient(to right, #f43f5e, #3b82f6);
     }
 
     .card .social-icons {
@@ -129,49 +119,11 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-4px); }
     }
-
-    @media (max-width: 768px) {
-      .carousel {
-        flex-wrap: nowrap;
-        overflow-x: scroll;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        height: auto;
-        padding: 60px 20px;
-      }
-
-      .carousel .card {
-        scroll-snap-align: center;
-        width: 250px;
-        transform: scale(1);
-        margin: 0 10px;
-      }
-
-      .carousel .card.active {
-        transform: scale(1.1);
-      }
-
-      .nav-btn {
-        top: unset;
-        bottom: 40px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(255, 255, 255, 0.1);
-        border: none;
-        color: white;
-        font-size: 2rem;
-        padding: 10px 15px;
-        z-index: 999;
-        border-radius: 10px;
-      }
-    }
   </style>
 </head>
 <body>
   <h1>Select Your Artist</h1>
   <div class="carousel">
-    <button class="nav-btn nav-left" onclick="rotateLeft()">&#8678;</button>
-
     <div class="card active">
       <div class="social-icons">
         <a href="https://instagram.com/ayarasenoj/" target="_blank"><img src="images/ig.png" alt="Instagram"></a>
@@ -220,29 +172,23 @@
       </div>
     </div>
 
-    <button class="nav-btn nav-right" onclick="rotateRight()">&#8680;</button>
+    <button class="next-btn" onclick="nextCard()">Next Artist</button>
   </div>
 
   <script>
     let current = 0;
-    const cards = document.querySelectorAll('.carousel .card');
+    const cards = document.querySelectorAll('.card');
 
     function updateCarousel() {
       cards.forEach(card => card.classList.remove('active'));
       cards[current].classList.add('active');
     }
 
-    function rotateLeft() {
-      current = (current - 1 + cards.length) % cards.length;
-      updateCarousel();
-    }
-
-    function rotateRight() {
+    function nextCard() {
       current = (current + 1) % cards.length;
       updateCarousel();
     }
 
-    // Ensure one card is always active on load
     updateCarousel();
   </script>
 </body>
