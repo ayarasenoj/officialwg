@@ -27,33 +27,32 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      gap: 40px;
       overflow: hidden;
       position: relative;
-      flex-direction: column;
+      flex-wrap: wrap;
     }
 
-    .card {
-      width: 300px;
-      max-width: 90%;
+    .carousel .card {
+      width: 220px;
       text-align: center;
-      opacity: 0;
+      transition: all 0.5s ease;
+      opacity: 0.4;
       filter: grayscale(100%);
       transform: scale(0.9);
       color: white;
-      position: absolute;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      z-index: 0;
-    }
-
-    .card.active {
-      opacity: 1;
-      filter: drop-shadow(0 0 25px white);
-      transform: scale(1.05);
-      z-index: 1;
       position: relative;
     }
 
-    .card img {
+    .carousel .card.active {
+      width: 300px;
+      opacity: 1;
+      filter: drop-shadow(0 0 25px white);
+      transform: scale(1.15);
+      z-index: 2;
+    }
+
+    .carousel .card img {
       width: 100%;
       height: auto;
     }
@@ -68,22 +67,6 @@
       font-size: 1.1rem;
       margin-bottom: 5px;
       color: #f43f5e;
-    }
-
-    .next-btn {
-      margin-top: 20px;
-      background: linear-gradient(to right, #990000, #f43f5e);
-      border: none;
-      color: white;
-      font-size: 1.2rem;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      z-index: 2;
-    }
-
-    .next-btn:hover {
-      background: linear-gradient(to right, #f43f5e, #3b82f6);
     }
 
     .card .social-icons {
@@ -118,6 +101,50 @@
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-4px); }
+    }
+
+    .next-btn {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .carousel {
+        flex-direction: column;
+        gap: 20px;
+        height: auto;
+        padding: 40px 20px;
+      }
+
+      .carousel .card {
+        position: absolute;
+        opacity: 0;
+        transform: scale(0.85);
+        width: 250px;
+      }
+
+      .carousel .card.active {
+        opacity: 1;
+        transform: scale(1.1);
+        z-index: 1;
+        position: relative;
+      }
+
+      .next-btn {
+        display: block;
+        margin-top: 20px;
+        background: linear-gradient(to right, #990000, #f43f5e);
+        border: none;
+        color: white;
+        font-size: 1.2rem;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        z-index: 2;
+      }
+
+      .next-btn:hover {
+        background: linear-gradient(to right, #f43f5e, #3b82f6);
+      }
     }
   </style>
 </head>
