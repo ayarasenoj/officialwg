@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <nav>
+  <a href="index.html">Home</a>
+  <a href="music.html">Music & Videos</a>
+  <a href="index.html#tour">Shows</a>
+  <a href="https://weirdogang.net" target="_blank">Apparel</a>
+  <a href="index.html#contact">Contact</a>
+</nav>
+
   <title>Weirdo Gang | Music & Videos</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
   <style>
@@ -278,6 +286,41 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   padding: 0 20px;
+}
+
+    nav {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+}
+
+nav a {
+  color: #990000;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #f43f5e;
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+  }
 }
 
   </style>
