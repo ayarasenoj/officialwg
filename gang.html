@@ -107,6 +107,27 @@
       display: none;
     }
 
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      padding: 10px 20px;
+      cursor: pointer;
+      z-index: 5;
+    }
+
+    .nav-left {
+      left: 10px;
+    }
+
+    .nav-right {
+      right: 10px;
+    }
+
     @media (max-width: 768px) {
       .carousel {
         flex-direction: column;
@@ -145,12 +166,18 @@
       .next-btn:hover {
         background: linear-gradient(to right, #f43f5e, #3b82f6);
       }
+
+      .nav-btn {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
   <h1>Select Your Artist</h1>
   <div class="carousel">
+    <button class="nav-btn nav-left" onclick="prevCard()">&#8678;</button>
+
     <div class="card active">
       <div class="social-icons">
         <a href="https://instagram.com/ayarasenoj/" target="_blank"><img src="images/ig.png" alt="Instagram"></a>
@@ -199,6 +226,7 @@
       </div>
     </div>
 
+    <button class="nav-btn nav-right" onclick="nextCard()">&#8680;</button>
     <button class="next-btn" onclick="nextCard()">Next Artist</button>
   </div>
 
@@ -213,6 +241,11 @@
 
     function nextCard() {
       current = (current + 1) % cards.length;
+      updateCarousel();
+    }
+
+    function prevCard() {
+      current = (current - 1 + cards.length) % cards.length;
       updateCarousel();
     }
 
