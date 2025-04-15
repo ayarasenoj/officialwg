@@ -127,6 +127,47 @@
         right: 20%;
       }
     }
+    @media (max-width: 768px) {
+  .carousel {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 60px 20px;
+    position: relative;
+  }
+
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    position: relative;
+  }
+
+  .nav-btn {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.07);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    z-index: 999;
+    padding: 10px 15px;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+  }
+
+  .nav-left {
+    top: 70px;
+  }
+
+  .nav-right {
+    bottom: 70px;
+  }
+}
+
 
     .concert-lights {
   position: absolute;
@@ -334,6 +375,7 @@ nav a:hover {
 
 <div class="carousel">
   <button class="nav-btn nav-left" onclick="rotateLeft()">&#8678;</button>
+  <div class="card-container">
 
   <div class="card active">
     <div class="social-icons">
