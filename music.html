@@ -252,6 +252,34 @@
   padding: 0 20px;
 }
 
+    .video-smoke-layer {
+  position: relative;
+  z-index: 1;
+}
+
+.video-smoke-overlay {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background: url('images/smoke.png') repeat;
+  background-size: cover;
+  opacity: 0.12;
+  z-index: 1;
+  pointer-events: none;
+  animation: smokeRise 30s linear infinite;
+}
+
+.video-grid-container {
+  position: relative;
+  z-index: 2; /* ensures videos are above smoke */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 0 20px;
+}
+
   </style>
 </head>
 <body>
@@ -264,7 +292,10 @@
 
 <section id="video-carousel" class="section-dark">
   <h2>Music & Videos</h2>
-<div class="video-smoke-wrap">
+  
+   <div class="video-smoke-layer">
+    <div class="video-smoke-overlay"></div>
+     
   <div class="video-grid-container">
   <!-- Video 1 -->
   <div class="video-slide" data-video="https://www.youtube.com/embed/Itdk8PXnX64?si=du8OB3D7vE9WTtFE">
