@@ -149,19 +149,7 @@
       }
     }
 
-    .carousel-container {
-      position: relative;
-      max-width: 1000px;
-      margin: 40px auto;
-      overflow: hidden;
-    }
-
-    .carousel-track {
-      display: flex;
-      transition: transform 0.4s ease;
-      gap: 20px;
-      flex-wrap: nowrap;
-    }
+   
 
     .video-slide {
       min-width: 300px;
@@ -191,26 +179,7 @@
       text-shadow: 0 0 5px black;
     }
 
-    .arrow {
-      position: absolute;
-      top: 40%;
-      font-size: 2rem;
-      background: none;
-      color: white;
-      border: none;
-      cursor: pointer;
-      z-index: 3;
-      padding: 0 10px;
-    }
-
-    .arrow.left {
-      left: 0;
-    }
-
-    .arrow.right {
-      right: 0;
-    }
-
+    
     #video-modal {
       display: none;
       position: fixed;
@@ -244,6 +213,16 @@
       color: white;
       cursor: pointer;
     }
+
+    .video-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
   </style>
 </head>
 <body>
@@ -256,7 +235,7 @@
 
 <section id="video-carousel" class="section-dark">
   <h2>Music & Videos</h2>
-  <div class="carousel-container">
+ <div class="video-grid-container">
     <button class="arrow left">&#10094;</button>
 
     <div class="carousel-track">
