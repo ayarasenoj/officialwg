@@ -11,6 +11,7 @@
       background: #0d0d0d;
       color: white;
       font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
     }
 
     header {
@@ -76,210 +77,184 @@
     }
 
     #video-intro {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: black;
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
 
-#video-intro img {
-  width: 100%;
-  height: auto;
-  max-height: 95vh;
-  object-fit: contain;
-}
+    #video-intro img {
+      width: 100%;
+      height: auto;
+      max-height: 95vh;
+      object-fit: contain;
+    }
 
+    #video-intro .smoke-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('images/smoke.png') repeat;
+      background-size: cover;
+      opacity: 0;
+      animation: smokeIn 4s forwards ease-in, smokeRise 15s linear infinite;
+    }
 
-#video-intro .smoke-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('images/smoke.png') repeat;
-  background-size: cover;
-  opacity: 0;
-  animation: smokeIn 4s forwards ease-in;
-}
+    @keyframes smokeIn {
+      0% { opacity: 0; background-position: center bottom; }
+      50% { opacity: 0.6; background-position: center center; }
+      100% { opacity: 1; background-position: center top; }
+    }
 
-@keyframes smokeIn {
-  0% {
-    opacity: 0;
-    background-position: center bottom;
-  }
-  50% {
-    opacity: 0.6;
-    background-position: center center;
-  }
-  100% {
-    opacity: 1;
-    background-position: center top;
-  }
-}
+    @keyframes smokeRise {
+      0% { background-position: center bottom; }
+      100% { background-position: center top; }
+    }
 
+    .fade-out {
+      animation: fadeOut 2s forwards ease-out;
+    }
 
-.fade-out {
-  animation: fadeOut 2s forwards ease-out;
-}
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
 
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
     #main-content {
-  opacity: 0;
-  transition: opacity 2s ease;
-}
+      opacity: 0;
+      transition: opacity 2s ease;
+    }
 
-#video-intro .smoke-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('images/smoke.png') repeat;
-  background-size: cover;
-  opacity: 0;
-  animation: smokeIn 4s forwards ease-in,
-             smokeRise 15s linear infinite;
-}
+    @media (max-width: 768px) {
+      #video-intro img {
+        content: url('images/intro-mobile.png');
+        object-fit: cover;
+        width: 100%;
+        height: 100vh;
+      }
 
-@keyframes smokeRise {
-  0% { background-position: center bottom; }
-  100% { background-position: center top; }
-}
-
-     body {
-  overflow-x: hidden;
-}
-
-@media (max-width: 768px) {
-  #video-intro img {
-    content: url('images/intro-mobile.png');
-    object-fit: cover;
-    width: 100%;
-    height: 100vh;
-  }
-
-  #video-intro .smoke-overlay {
-    background-size: contain;
-  }
-
-}
+      #video-intro .smoke-overlay {
+        background-size: contain;
+      }
+    }
 
     .carousel-container {
-  position: relative;
-  max-width: 1000px;
-  margin: 40px auto;
-  overflow: hidden;
-}
+      position: relative;
+      max-width: 1000px;
+      margin: 40px auto;
+      overflow: hidden;
+    }
 
-.carousel-track {
-  display: flex;
-  transition: transform 0.4s ease;
-  gap: 20px;
-}
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s ease;
+      gap: 20px;
+      flex-wrap: nowrap;
+    }
 
-.video-slide {
-  min-width: 300px;
-  position: relative;
-  cursor: pointer;
-  filter: brightness(70%);
-  transition: transform 0.3s, filter 0.3s, box-shadow 0.3s;
-}
+    .video-slide {
+      min-width: 300px;
+      position: relative;
+      cursor: pointer;
+      filter: brightness(70%);
+      transition: transform 0.3s, filter 0.3s, box-shadow 0.3s;
+    }
 
-.video-slide img {
-  width: 100%;
-  border-radius: 10px;
-}
+    .video-slide img {
+      width: 100%;
+      border-radius: 10px;
+    }
 
-.video-slide:hover {
-  filter: brightness(120%);
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #f43f5e;
-  z-index: 2;
-}
+    .video-slide:hover {
+      filter: brightness(120%);
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #f43f5e;
+      z-index: 2;
+    }
 
-.video-slide .overlay {
-  position: absolute;
-  bottom: 10px;
-  left: 15px;
-  color: white;
-  text-shadow: 0 0 5px black;
-}
+    .video-slide .overlay {
+      position: absolute;
+      bottom: 10px;
+      left: 15px;
+      color: white;
+      text-shadow: 0 0 5px black;
+    }
 
-.arrow {
-  position: absolute;
-  top: 40%;
-  font-size: 2rem;
-  background: none;
-  color: white;
-  border: none;
-  cursor: pointer;
-  z-index: 3;
-  padding: 0 10px;
-}
+    .arrow {
+      position: absolute;
+      top: 40%;
+      font-size: 2rem;
+      background: none;
+      color: white;
+      border: none;
+      cursor: pointer;
+      z-index: 3;
+      padding: 0 10px;
+    }
 
-.arrow.left {
-  left: 0;
-}
+    .arrow.left {
+      left: 0;
+    }
 
-.arrow.right {
-  right: 0;
-}
+    .arrow.right {
+      right: 0;
+    }
 
-#video-modal {
-  display: none;
-  position: fixed;
-  z-index: 99999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.9);
-  justify-content: center;
-  align-items: center;
-}
+    #video-modal {
+      display: none;
+      position: fixed;
+      z-index: 99999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+    }
 
-.modal-content {
-  position: relative;
-  width: 80%;
-  max-width: 800px;
-}
+    .modal-content {
+      position: relative;
+      width: 80%;
+      max-width: 800px;
+    }
 
-.modal-content iframe {
-  width: 100%;
-  height: 450px;
-  border-radius: 10px;
-}
+    .modal-content iframe {
+      width: 100%;
+      height: 450px;
+      border-radius: 10px;
+    }
 
-.close-btn {
-  position: absolute;
-  top: -30px;
-  right: 0;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-}
-
+    .close-btn {
+      position: absolute;
+      top: -30px;
+      right: 0;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
+
 <!-- VIDEO INTRO ANIMATION -->
 <div id="video-intro">
   <img src="images/video-intro.png" alt="Weirdo Gang Intro Image">
   <div class="smoke-overlay"></div>
 </div>
-  <section id="video-carousel" class="section-dark">
+
+<section id="video-carousel" class="section-dark">
   <h2>Music & Videos</h2>
   <div class="carousel-container">
     <button class="arrow left">&#10094;</button>
@@ -287,7 +262,7 @@
     <div class="carousel-track">
       <!-- Video 1 -->
       <div class="video-slide" data-video="https://www.youtube.com/embed/Itdk8PXnX64?si=du8OB3D7vE9WTtFE">
-        <img src="images/bowchicka.png" alt="Song Title 1">
+        <img src="images/bowchicka.png" alt="Bow Chicka Wow Wow">
         <div class="overlay">
           <h3>Bow Chicka Wow Wow ft. Merc</h3>
           <p>by Fliparachee</p>
@@ -296,7 +271,7 @@
 
       <!-- Video 2 -->
       <div class="video-slide" data-video="https://www.youtube.com/embed/LLGlf5N87cw?si=d5mYRADEfY3Afflx">
-        <img src="images/mytype.png" alt="Song Title 2">
+        <img src="images/mytype.png" alt="My Type">
         <div class="overlay">
           <h3>My Type ft. Fliparachee</h3>
           <p>by TK the Grate</p>
@@ -305,41 +280,40 @@
 
       <!-- Video 3 -->
       <div class="video-slide" data-video="https://www.youtube.com/embed/wy0Yyk5J5i8?si=fdb3SCdTRzik_ZY4">
-        <img src="images/downbad.png" alt="Song Title 3">
+        <img src="images/downbad.png" alt="Down Bad Freestyle">
         <div class="overlay">
           <h3>Down Bad Freestyle (She-Mix)</h3>
           <p>by Ayara Senoj</p>
         </div>
       </div>
+
+      <!-- Video 4 -->
+      <div class="video-slide" data-video="https://www.youtube.com/embed/drRAF9mFcfo?si=bGkVVMrsp_-F42DI">
+        <img src="images/weirdo.png" alt="Weirdo">
+        <div class="overlay">
+          <h3>Weirdo</h3>
+          <p>by Fliparachee</p>
+        </div>
+      </div>
+
+      <!-- Video 5 -->
+      <div class="video-slide" data-video="https://www.youtube.com/embed/O9TrJdrYAl4?si=2kKWdY58NQ6f8r0O">
+        <img src="images/evilways.PNG" alt="Evil Ways">
+        <div class="overlay">
+          <h3>Evil Ways</h3>
+          <p>by TK the Grate</p>
+        </div>
+      </div>
+
+      <!-- Video 6 -->
+      <div class="video-slide" data-video="https://www.youtube.com/embed/cHTUo5bGCMI?si=Y0SfRTbgyPE27UF-">
+        <img src="images/realspirit.png" alt="Real Spirit">
+        <div class="overlay">
+          <h3>(Smells Like) Real Spirit</h3>
+          <p>by Ayara Senoj</p>
+        </div>
+      </div>
     </div>
-
-    <!-- Video 4 -->
-<div class="video-slide" data-video="https://www.youtube.com/drRAF9mFcfo?si=bGkVVMrsp_-F42DI">
-  <img src="images/weirdo.png" alt="Song Title 4">
-  <div class="overlay">
-    <h3>Weirdo</h3>
-    <p>by Fliparachee</p>
-  </div>
-</div>
-
-<!-- Video 5 -->
-<div class="video-slide" data-video="https://www.youtube.com/O9TrJdrYAl4?si=2kKWdY58NQ6f8r0O">
-  <img src="images/evilways.PNG" alt="Song Title 5">
-  <div class="overlay">
-    <h3>Evil Ways</h3>
-    <p>by TK the Grate</p>
-  </div>
-</div>
-
-<!-- Video 6 -->
-<div class="video-slide" data-video="https://www.youtube.com/cHTUo5bGCMI?si=Y0SfRTbgyPE27UF-">
-  <img src="images/realspirit.png" alt="Song Title 6">
-  <div class="overlay">
-    <h3>(Smells Like) Real Spirit</h3>
-    <p>by Ayara Senoj</p>
-  </div>
-</div>
-
 
     <button class="arrow right">&#10095;</button>
   </div>
@@ -354,20 +328,16 @@
 </div>
 
 <div id="main-content" style="display: none;">
-
-
   <footer>
-  <p>&copy; 2025 Official Weirdo Gang. All rights reserved.</p>
-</footer>
+    <p>&copy; 2025 Official Weirdo Gang. All rights reserved.</p>
+  </footer>
+</div>
 
 <script>
   setTimeout(() => {
     document.getElementById('video-intro').classList.add('fade-out');
-
     const main = document.getElementById('main-content');
     main.style.display = 'block';
-    
-    // Delay a little to allow it to load, then fade in
     setTimeout(() => {
       main.style.opacity = 1;
     }, 100);
