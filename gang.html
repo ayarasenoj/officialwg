@@ -70,16 +70,18 @@
     }
 
     .card .social-icons {
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%) translateY(-20px);
-      display: flex;
-      gap: 12px;
-      opacity: 0;
-      transition: opacity 0.4s ease, transform 0.4s ease;
-      z-index: 999;
-    }
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  display: flex;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 10000; /* 🔥 boosted to be way on top */
+  pointer-events: auto;
+}
+
 
     .card.active .social-icons {
       opacity: 1;
