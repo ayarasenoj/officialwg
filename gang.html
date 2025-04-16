@@ -218,6 +218,16 @@ nav a:hover {
   }
 }
 
+    .card {
+  position: relative;
+  z-index: 3; /* Make sure the card itself sits above any background or smoke */
+}
+
+.card .social-icons {
+  z-index: 4; /* Ensure the icons are at the absolute top layer within the card */
+}
+
+
   </style>
 </head>
 <body>
