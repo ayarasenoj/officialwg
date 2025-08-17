@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weirdo Gang | New Drop Coming</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: url('images/album-cover.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
 
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      text-shadow: 0 0 12px #000;
+    }
+
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+      max-width: 90%;
+      text-shadow: 0 0 10px #000;
+    }
+
+    .btn-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .btn-container a {
+      text-decoration: none;
+      background: linear-gradient(to right, #990000, #f43f5e);
+      color: white;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+
+    .btn-container a:hover {
+      background: linear-gradient(to right, #f43f5e, #3b82f6);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9rem;
+      text-shadow: 0 0 10px #000;
+    }
+  </style>
+  <script>
+    // Redirect on drop date (adjust to your exact date/time in UTC)
+    const dropDate = new Date("2025-08-24T04:00:00Z").getTime();
+    const now = new Date().getTime();
+
+    if (now >= dropDate) {
+      window.location.href = "index.html"; // Change to your main homepage
+    }
+  </script>
+</head>
+<body>
+  <h1>Something Big is Coming</h1>
+  <p>Weirdo Gang’s official site drops with the album. Until then, ride with us. Tap in.</p>
+  <div class="btn-container">
+    <a href="https://your-presave-link.com" target="_blank">Pre-Save Now</a>
+    <a href="https://your-newsletter-signup-link.com" target="_blank">Join the Newsletter</a>
+  </div>
+  <footer>Full site unlocks on drop day. Get ready.</footer>
+</body>
+</html>
