@@ -2,157 +2,159 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>#GangRelated – Coming Soon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>#GangRelated Album Gate</title>
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Montserrat', sans-serif;
-      color: white;
-      height: 100vh;
+      height: 100%;
       overflow: hidden;
-      background: #000;
+      font-family: Arial, sans-serif;
     }
 
-    #intro-video {
+    /* Video Intro Styles */
+    #videoIntro {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
+      width: 100%;
       height: 100vh;
-      object-fit: cover;
+      background: black;
       z-index: 9999;
-      display: none;
-    }
-
-    #enter-button {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #f43f5e;
-      color: white;
-      padding: 16px 32px;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.5rem;
-      font-weight: bold;
-      cursor: pointer;
-      z-index: 2;
-    }
-
-    #enter-button:hover {
-      background: #990000;
-    }
-
-    #gate-content {
-      display: none;
-      position: relative;
-      background: url('images/gangrelated-cover.jpg') no-repeat center center fixed;
-      background-size: 70%;
-      width: 100vw;
-      height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      opacity: 0;
-      transition: opacity 2s ease;
+      flex-direction: column;
     }
 
-    #gate-content.show-gate {
-      display: flex;
-      opacity: 1;
+    #videoIntro video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
     }
 
-    #gate-content p {
-      font-size: 1.2rem;
-      max-width: 500px;
-      margin-bottom: 2rem;
-      text-shadow: 0 0 6px #000;
-    }
-
-    .button-group a {
-      display: inline-block;
+    #videoIntro button {
+      z-index: 10000;
       background: #f43f5e;
       color: white;
-      padding: 12px 24px;
-      margin: 10px;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border: none;
       border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s ease;
+      cursor: pointer;
     }
 
-    .button-group a:hover {
-      background: #990000;
+    /* Main Gate Page Styles */
+    #mainGate {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      background: url('images/gangrelated-cover.jpg') no-repeat center center fixed;
+      background-size: 70%; /* You said you wanted this exact % */
+      background-color: black;
+      background-blend-mode: multiply;
+      position: relative;
     }
 
-    footer {
+    .newsletter-btn {
       position: absolute;
-      bottom: 20px;
-      font-size: 0.8rem;
-      color: #ccc;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1rem;
     }
 
-    @media (max-width: 768px) {
-      #gate-content {
-        background-size: cover;
-      }
+    /* Newsletter Modal */
+    #newsletterModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #newsletterModal form {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    #newsletterModal input[type="email"] {
+      padding: 0.5rem;
+      width: 80%;
+      margin-bottom: 1rem;
+    }
+
+    #newsletterModal button[type="submit"] {
+      padding: 0.5rem 1rem;
+      background-color: #f43f5e;
+      color: white;
+      border: none;
+    }
+
+    #newsletterModal a {
+      display: block;
+      margin-top: 1rem;
+      color: #333;
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
+  <!-- Video Intro -->
+  <div id="videoIntro">
+    <video id="introVideo" autoplay playsinline muted="false">
+      <source src="images/gangrelated-intro.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <button onclick="enterSite()">Enter Site</button>
+  </div>
 
-  <video id="intro-video" autoplay playsinline>
-    <source src="images/gangrelated-intro.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <!-- Main Gate Page -->
+  <div id="mainGate">
+    <a href="#" class="newsletter-btn" onclick="document.getElementById('newsletterModal').style.display='flex'">Join the Newsletter</a>
+  </div>
 
-  <button id="enter-button">Enter Site</button>
-
-  <div id="gate-content">
-    <p>Our debut album is almost here. Pre-save now and join the gang to stay locked in.</p>
-    <div class="button-group">
-      <a href="https://your-presave-link.com" target="_blank">Pre-Save Now</a>
-      <a href="https://formspree.io/f/meoadvab" target="_blank">Join the Newsletter</a>
-    </div>
-    <footer>
-      Full site launching on drop day.
-    </footer>
+  <!-- Newsletter Modal -->
+  <div id="newsletterModal">
+    <form method="POST" action="https://formspree.io/f/meoadvab">
+      <h2>Subscribe</h2>
+      <input type="email" name="email" placeholder="Your email" required />
+      <br />
+      <button type="submit">Subscribe</button>
+      <a href="#" onclick="document.getElementById('newsletterModal').style.display='none'">Close</a>
+    </form>
   </div>
 
   <script>
-    const enterButton = document.getElementById("enter-button");
-    const introVideo = document.getElementById("intro-video");
-    const gateContent = document.getElementById("gate-content");
+    function enterSite() {
+      const intro = document.getElementById("videoIntro");
+      const mainGate = document.getElementById("mainGate");
 
-    enterButton.addEventListener("click", () => {
-      enterButton.style.display = "none";
-      introVideo.style.display = "block";
-      introVideo.play();
-
-      introVideo.addEventListener("ended", () => {
-        introVideo.style.display = "none";
-        gateContent.classList.add("show-gate");
-      });
+      intro.style.transition = "opacity 1s ease";
+      intro.style.opacity = "0";
 
       setTimeout(() => {
-        if (!gateContent.classList.contains("show-gate")) {
-          introVideo.style.display = "none";
-          gateContent.classList.add("show-gate");
-        }
-      }, 12000);
-    });
-
-    const dropDate = new Date("2025-08-24T00:00:00");
-    const now = new Date();
-    if (now >= dropDate) {
-      window.location.href = "home.html";
+        intro.style.display = "none";
+        mainGate.style.display = "block";
+      }, 1000);
     }
   </script>
-
 </body>
 </html>
