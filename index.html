@@ -182,7 +182,21 @@
       if (!introVideo.ended) revealGate();
     }, 12000);
   </script>
+<script>
+  function playIntro() {
+    const video = document.getElementById('intro-video');
+    const gate = document.getElementById('enter-screen');
 
+    gate.style.display = 'none';
+    video.style.display = 'block';
+    video.play();
+
+    // When video finishes, redirect to the gate page
+    video.onended = () => {
+      window.location.href = "gate.html"; // 👈 change if needed
+    };
+  }
+</script>
 </body>
 </html>
 
