@@ -3,157 +3,172 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>#GangRelated Album Gate</title>
+  <title>#GangRelated – Coming Soon</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow: hidden;
-      font-family: Arial, sans-serif;
+      font-family: 'Montserrat', sans-serif;
+      background-color: black;
+      color: white;
     }
 
-    /* Video Intro Styles */
-    #videoIntro {
+    /* Intro wrapper */
+    #introWrapper {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
+      width: 100vw;
       height: 100vh;
       background: black;
-      z-index: 9999;
+      z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      transition: opacity 0.6s ease;
     }
 
-    #videoIntro video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
+    #introWrapper.hidden {
+      opacity: 0;
+      pointer-events: none;
     }
 
-    #videoIntro button {
-      z-index: 10000;
+    #enterBtn {
       background: #f43f5e;
       color: white;
-      padding: 1rem 2rem;
+      padding: 16px 32px;
       font-size: 1.2rem;
+      font-weight: bold;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
+      transition: background 0.3s ease;
+      z-index: 1001;
     }
 
-    /* Main Gate Page Styles */
+    #enterBtn:hover {
+      background: #990000;
+    }
+
+    #introVideo {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+
     #mainGate {
       display: none;
-      height: 100vh;
-      width: 100vw;
       background: url('images/gangrelated-cover.jpg') no-repeat center center fixed;
-      background-size: 70%; /* You said you wanted this exact % */
-      background-color: black;
-      background-blend-mode: multiply;
-      position: relative;
+      background-size: 70%;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      backdrop-filter: brightness(0.6);
     }
 
-    .newsletter-btn {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.7);
+    #mainGate p {
+      font-size: 1.2rem;
+      max-width: 500px;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 6px #000;
+    }
+
+    .button-group a {
+      display: inline-block;
+      background: #f43f5e;
       color: white;
       padding: 12px 24px;
-      border-radius: 8px;
+      margin: 10px;
+      border-radius: 6px;
       text-decoration: none;
-      font-size: 1rem;
+      font-weight: bold;
+      transition: background 0.3s ease;
     }
 
-    /* Newsletter Modal */
-    #newsletterModal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      z-index: 10000;
-      justify-content: center;
-      align-items: center;
+    .button-group a:hover {
+      background: #990000;
     }
 
-    #newsletterModal form {
-      background: white;
-      padding: 2rem;
-      border-radius: 8px;
-      text-align: center;
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.8rem;
+      color: #ccc;
     }
 
-    #newsletterModal input[type="email"] {
-      padding: 0.5rem;
-      width: 80%;
-      margin-bottom: 1rem;
-    }
-
-    #newsletterModal button[type="submit"] {
-      padding: 0.5rem 1rem;
-      background-color: #f43f5e;
-      color: white;
-      border: none;
-    }
-
-    #newsletterModal a {
-      display: block;
-      margin-top: 1rem;
-      color: #333;
-      text-decoration: underline;
+    @media (max-width: 768px) {
+      #mainGate {
+        background-size: cover;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Video Intro -->
-  <div id="videoIntro">
-    <video id="introVideo" autoplay playsinline muted="false">
+  <!-- Intro Section -->
+  <div id="introWrapper">
+    <button id="enterBtn">Enter Site</button>
+    <video id="introVideo" playsinline preload="auto">
       <source src="images/gangrelated-intro.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
-    <button onclick="enterSite()">Enter Site</button>
   </div>
 
-  <!-- Main Gate Page -->
+  <!-- Main Gate -->
   <div id="mainGate">
-    <a href="#" class="newsletter-btn" onclick="document.getElementById('newsletterModal').style.display='flex'">Join the Newsletter</a>
+    <p>Our debut album is almost here. Pre-save now and join the gang to stay locked in.</p>
+    <div class="button-group">
+      <a href="https://your-presave-link.com" target="_blank">Pre-Save Now</a>
+      <a href="#" onclick="openNewsletterPopup()">Join the Newsletter</a>
+    </div>
+    <footer>Full site launching on drop day.</footer>
   </div>
 
-  <!-- Newsletter Modal -->
-  <div id="newsletterModal">
-    <form method="POST" action="https://formspree.io/f/meoadvab">
-      <h2>Subscribe</h2>
-      <input type="email" name="email" placeholder="Your email" required />
-      <br />
-      <button type="submit">Subscribe</button>
-      <a href="#" onclick="document.getElementById('newsletterModal').style.display='none'">Close</a>
-    </form>
-  </div>
-
+  <!-- Newsletter popup -->
   <script>
-    function enterSite() {
-      const intro = document.getElementById("videoIntro");
-      const mainGate = document.getElementById("mainGate");
+    function openNewsletterPopup() {
+      window.open('https://formspree.io/f/meoadvab', '_blank');
+    }
+  </script>
 
-      intro.style.transition = "opacity 1s ease";
-      intro.style.opacity = "0";
+  <!-- Video Transition Logic -->
+  <script>
+    const enterBtn = document.getElementById("enterBtn");
+    const introWrapper = document.getElementById("introWrapper");
+    const introVideo = document.getElementById("introVideo");
+    const mainGate = document.getElementById("mainGate");
 
+    enterBtn.addEventListener("click", () => {
+      enterBtn.style.display = "none";
+      introVideo.style.display = "block";
+      introVideo.play();
+    });
+
+    introVideo.addEventListener("ended", () => {
+      introWrapper.classList.add("hidden");
       setTimeout(() => {
-        intro.style.display = "none";
-        mainGate.style.display = "block";
-      }, 1000);
+        introWrapper.style.display = "none";
+        mainGate.style.display = "flex";
+      }, 600);
+    });
+  </script>
+
+  <!-- Optional redirect to homepage on drop day -->
+  <script>
+    const dropDate = new Date("2025-08-24T00:00:00");
+    const now = new Date();
+    if (now >= dropDate) {
+      window.location.href = "home.html";
     }
   </script>
 </body>
