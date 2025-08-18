@@ -10,6 +10,15 @@
     }
 
     body {
+      <div id="enter-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; color: white; display: flex; align-items: center; justify-content: center; flex-direction: column; z-index: 10000;">
+  <h1 style="margin-bottom: 20px; font-size: 2rem;">Weirdo Gang Presents:</h1>
+  <button onclick="playIntro()" style="padding: 12px 24px; font-size: 1.2rem; font-weight: bold; background-color: #f43f5e; color: white; border: none; border-radius: 6px; cursor: pointer;">Enter Site</button>
+</div>
+
+<video id="intro-video" preload="auto" playsinline style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 9999;">
+  <source src="images/gangrelated-intro.mp4" type="video/mp4">
+</video>
+
       margin: 0;
       padding: 0;
       background: black;
