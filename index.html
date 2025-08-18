@@ -6,94 +6,77 @@
   <title>#GangRelated – Coming Soon</title>
   <style>
     body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  height: 100vh;
-  background: url('images/gangrelated-cover.jpg') no-repeat center center fixed;
-  background-size: cover;
-  background-color: #000; /* fallback color */
-  overflow: hidden;
-}
-
+      margin: 0;
+      padding: 0;
+      background-image: url('images/gangrelated-cover.jpg');
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: center top;
+background-size: cover;
+      font-family: 'Montserrat', sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      backdrop-filter: brightness(0.6);
+    }
 
     h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-      text-shadow: 0 0 14px #000;
-      letter-spacing: 2px;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 10px #000;
     }
 
     p {
       font-size: 1.2rem;
-      max-width: 600px;
+      max-width: 500px;
       margin-bottom: 2rem;
       text-shadow: 0 0 6px #000;
     }
 
-    .button-group {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-
     .button-group a {
       display: inline-block;
-      background: linear-gradient(to right, #990000, #f43f5e);
+      background: #f43f5e;
       color: white;
-      padding: 14px 28px;
-      border-radius: 8px;
+      padding: 12px 24px;
+      margin: 10px;
+      border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 1rem;
-      transition: background 0.3s ease, transform 0.2s ease;
+      transition: background 0.3s ease;
     }
 
     .button-group a:hover {
-      background: linear-gradient(to right, #f43f5e, #3b82f6);
-      transform: scale(1.05);
+      background: #990000;
     }
 
     footer {
       position: absolute;
       bottom: 20px;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       color: #ccc;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.4rem;
-      }
-
-      p {
-        font-size: 1rem;
-        padding: 0 20px;
-      }
-
-      .button-group a {
-        font-size: 0.95rem;
-        padding: 12px 20px;
-      }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🔻 Main Gate Message -->
+  <!-- 🔻 Here's your main message -->
   
-  <p>Weirdo Gang’s debut album is almost here. Pre-save it now and join the gang for exclusive updates.</p>
+  <p>Our debut album is almost here. Pre-save now and join the gang to stay locked in.</p>
 
-  <!-- 🔻 CTA Buttons -->
   <div class="button-group">
     <a href="https://your-presave-link.com" target="_blank">Pre-Save Now</a>
     <a href="https://your-newsletter-signup.com" target="_blank">Join the Newsletter</a>
   </div>
 
-  <footer>Full website drops on August 24.</footer>
+  <footer>
+    Full site launching on drop day.
+  </footer>
 
-  <!-- 🔁 Redirect on drop day -->
+  <!-- 🔒 Optional redirect script for launch day -->
   <script>
     const dropDate = new Date("2025-08-24T00:00:00");
     const now = new Date();
