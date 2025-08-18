@@ -5,25 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>#GangRelated – Coming Soon</title>
   <style>
-    body {
+    * {
+      box-sizing: border-box;
+    }
+
+    body, html {
       margin: 0;
       padding: 0;
-      background: url('images/gangrelated-cover.jpg') no-repeat center center fixed;
-      background-size: 70%;
-      background-position: center;
+      height: 100%;
       font-family: 'Montserrat', sans-serif;
+      background: black;
       color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      backdrop-filter: brightness(0.6);
       overflow: hidden;
     }
 
-    #intro {
+    #videoIntro {
       position: fixed;
       top: 0;
       left: 0;
@@ -33,30 +29,48 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 9999;
       flex-direction: column;
+      z-index: 9999;
     }
 
-    #intro-video {
-      max-width: 100%;
-      max-height: 100vh;
-      display: none;
-      visibility: hidden;
+    #videoIntro video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    #enter-btn {
-      padding: 14px 28px;
-      background: #f43f5e;
+    #enterButton {
+      position: absolute;
+      bottom: 10%;
+      background-color: #f43f5e;
       color: white;
-      font-weight: bold;
+      padding: 14px 28px;
       border: none;
       border-radius: 8px;
+      font-size: 1.2rem;
       cursor: pointer;
-      margin-top: 20px;
-      font-size: 1.1rem;
+      z-index: 99999;
+      transition: background 0.3s ease;
     }
 
-    p {
+    #enterButton:hover {
+      background: #990000;
+    }
+
+    #mainGate {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100vh;
+      background: url('images/gangrelated-cover.jpg') no-repeat center center fixed;
+      background-size: 70%;
+      backdrop-filter: brightness(0.6);
+      padding: 0 20px;
+    }
+
+    #mainGate p {
       font-size: 1.2rem;
       max-width: 500px;
       margin-bottom: 2rem;
@@ -86,58 +100,57 @@
       color: #ccc;
     }
 
-    @media (max-width: 600px) {
-      body {
-        background-position: top center;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-attachment: scroll;
+    @media (max-width: 768px) {
+      #mainGate {
+        background-size: cover;
+        background-position: center;
+      }
+
+      #enterButton {
+        font-size: 1rem;
+        padding: 12px 20px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🔥 INTRO SCREEN -->
-  <div id="intro">
-    <video id="intro-video" src="images/gangrelated-intro.mp4" autoplay playsinline></video>
-    <button id="enter-btn" onclick="playIntro()">Enter Site</button>
+  <!-- 🔥 Intro video -->
+  <div id="videoIntro">
+    <video id="introVid" autoplay playsinline>
+      <source src="images/gangrelated-intro.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <button id="enterButton">Enter Site</button>
   </div>
 
-  <!-- 🔻 GATE MESSAGE -->
-  <p>Our debut album is almost here. Pre-save now and join the gang to stay locked in.</p>
-
-  <div class="button-group">
-    <a href="https://your-presave-link.com" target="_blank">Pre-Save Now</a>
-    <a href="https://your-newsletter-signup.com" target="_blank">Join the Newsletter</a>
+  <!-- 🧱 Gate content -->
+  <div id="mainGate">
+    <p>Our debut album is almost here. Pre-save now and join the gang to stay locked in.</p>
+    <div class="button-group">
+      <a href="https://your-presave-link.com" target="_blank">Pre-Save Now</a>
+      <a href="https://your-newsletter-signup.com" target="_blank">Join the Newsletter</a>
+    </div>
+    <footer>Full site launching on drop day.</footer>
   </div>
 
-  <footer>
-    Full site launching on drop day.
-  </footer>
-
-  <!-- 🔐 REDIRECT + VIDEO LOGIC -->
   <script>
+    const enterButton = document.getElementById("enterButton");
+    const videoIntro = document.getElementById("videoIntro");
+    const mainGate = document.getElementById("mainGate");
+    const introVid = document.getElementById("introVid");
+
+    enterButton.addEventListener("click", () => {
+      introVid.pause();
+      videoIntro.style.display = "none";
+      mainGate.style.display = "flex";
+    });
+
+    // Optional auto-redirect after drop
     const dropDate = new Date("2025-08-24T00:00:00");
     const now = new Date();
     if (now >= dropDate) {
       window.location.href = "home.html";
-    }
-
-    function playIntro() {
-      const intro = document.getElementById('intro');
-      const video = document.getElementById('intro-video');
-
-      video.style.display = 'block';
-      video.style.visibility = 'visible';
-      document.getElementById('enter-btn').style.display = 'none';
-
-      video.play();
-
-      video.onended = function () {
-        intro.style.display = 'none';
-        document.body.style.overflow = 'auto';
-      };
     }
   </script>
 </body>
