@@ -5,93 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>#GangRelated – Coming Soon</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      <div id="enter-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; color: white; display: flex; align-items: center; justify-content: center; flex-direction: column; z-index: 10000;">
-  <h1 style="margin-bottom: 20px; font-size: 2rem;">Weirdo Gang Presents:</h1>
-  <button onclick="playIntro()" style="padding: 12px 24px; font-size: 1.2rem; font-weight: bold; background-color: #f43f5e; color: white; border: none; border-radius: 6px; cursor: pointer;">Enter Site</button>
-</div>
-
-<video id="intro-video" preload="auto" playsinline style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 9999;">
-  <source src="images/gangrelated-intro.mp4" type="video/mp4">
-</video>
-
       margin: 0;
       padding: 0;
-      background: black;
+      background: url('images/gangrelated-cover.jpg') no-repeat center center fixed;
+      background-size: 70%;
+      background-position: center;
       font-family: 'Montserrat', sans-serif;
       color: white;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .intro-screen {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: black;
-      z-index: 10;
-    }
-
-    .intro-screen button {
-      background: #f43f5e;
-      border: none;
-      padding: 16px 32px;
-      font-size: 1.5rem;
-      border-radius: 12px;
-      color: white;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      z-index: 11;
-    }
-
-    .intro-screen button:hover {
-      background: #990000;
-    }
-
-    .video-intro {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 9;
-      display: none;
-    }
-
-    .video-shown {
-      display: block;
-    }
-
-    .video-hidden {
-      opacity: 0;
-      transition: opacity 1.5s ease-in-out;
-      pointer-events: none;
-    }
-
-    .gate-content {
-      position: absolute;
-      inset: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      height: 100vh;
       text-align: center;
-      background: url('images/gangrelated-cover.jpg') no-repeat center center fixed;
-      background-size: 70%;
       backdrop-filter: brightness(0.6);
-      opacity: 0;
-      transition: opacity 1.5s ease-in-out;
-      z-index: 1;
-      padding: 20px;
+      overflow: hidden;
     }
 
-    .gate-content p {
+    #intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      flex-direction: column;
+    }
+
+    #intro-video {
+      max-width: 100%;
+      max-height: 100vh;
+      display: none;
+      visibility: hidden;
+    }
+
+    #enter-btn {
+      padding: 14px 28px;
+      background: #f43f5e;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      font-size: 1.1rem;
+    }
+
+    p {
       font-size: 1.2rem;
       max-width: 500px;
       margin-bottom: 2rem;
@@ -119,39 +84,39 @@
       bottom: 20px;
       font-size: 0.8rem;
       color: #ccc;
-      width: 100%;
-      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        background-position: top center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🎬 VIDEO BACKGROUND -->
-  <video id="introVideo" class="video-intro" playsinline>
-    <source src="images/gangrelated-intro.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
-  <!-- 🔘 CLICK TO ENTER -->
-  <div class="intro-screen" id="introScreen">
-    <button id="enterBtn">Enter the Site</button>
+  <!-- 🔥 INTRO SCREEN -->
+  <div id="intro">
+    <video id="intro-video" src="images/gangrelated-intro.mp4" autoplay playsinline></video>
+    <button id="enter-btn" onclick="playIntro()">Enter Site</button>
   </div>
 
-  <!-- 🔓 GATE CONTENT -->
-  <div class="gate-content" id="gateContent">
-    <p>Our debut album is almost here. Pre-save now and join the gang to stay locked in.</p>
+  <!-- 🔻 GATE MESSAGE -->
+  <p>Our debut album is almost here. Pre-save now and join the gang to stay locked in.</p>
 
-    <div class="button-group">
-      <a href="https://your-presave-link.com" target="_blank">Pre-Save Now</a>
-      <a href="https://your-newsletter-signup.com" target="_blank">Join the Newsletter</a>
-    </div>
-
-    <footer>
-      Full site launching on drop day.
-    </footer>
+  <div class="button-group">
+    <a href="https://your-presave-link.com" target="_blank">Pre-Save Now</a>
+    <a href="https://your-newsletter-signup.com" target="_blank">Join the Newsletter</a>
   </div>
 
-  <!-- 🔁 Redirect script -->
+  <footer>
+    Full site launching on drop day.
+  </footer>
+
+  <!-- 🔐 REDIRECT + VIDEO LOGIC -->
   <script>
     const dropDate = new Date("2025-08-24T00:00:00");
     const now = new Date();
@@ -159,44 +124,21 @@
       window.location.href = "home.html";
     }
 
-    const introVideo = document.getElementById('introVideo');
-    const gateContent = document.getElementById('gateContent');
-    const introScreen = document.getElementById('introScreen');
-    const enterBtn = document.getElementById('enterBtn');
+    function playIntro() {
+      const intro = document.getElementById('intro');
+      const video = document.getElementById('intro-video');
 
-    enterBtn.addEventListener('click', () => {
-      introVideo.classList.add('video-shown');
-      introScreen.style.display = 'none';
-      introVideo.play();
-    });
+      video.style.display = 'block';
+      video.style.visibility = 'visible';
+      document.getElementById('enter-btn').style.display = 'none';
 
-    function revealGate() {
-      introVideo.classList.add('video-hidden');
-      gateContent.style.opacity = 1;
+      video.play();
+
+      video.onended = function () {
+        intro.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      };
     }
-
-    introVideo.addEventListener('ended', revealGate);
-
-    // Fallback timeout in case video doesn’t fire
-    setTimeout(() => {
-      if (!introVideo.ended) revealGate();
-    }, 12000);
   </script>
-<script>
-  function playIntro() {
-    const video = document.getElementById('intro-video');
-    const gate = document.getElementById('enter-screen');
-
-    gate.style.display = 'none';
-    video.style.display = 'block';
-    video.play();
-
-    // When video finishes, redirect to the gate page
-    video.onended = () => {
-      window.location.href = "gate.html"; // 👈 change if needed
-    };
-  }
-</script>
 </body>
 </html>
-
