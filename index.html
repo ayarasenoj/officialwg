@@ -2,84 +2,109 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Weirdo Gang | New Drop Coming</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>#GangRelated – Coming Soon</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: url('images/album-cover.jpg') no-repeat center center fixed;
+      background: url('images/gangrelated-cover.jpg') no-repeat center center fixed;
       background-size: cover;
+      font-family: 'Montserrat', sans-serif;
       color: white;
-      text-align: center;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       height: 100vh;
-      overflow: hidden;
+      text-align: center;
+      backdrop-filter: brightness(0.6);
     }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      text-shadow: 0 0 12px #000;
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 14px #000;
+      letter-spacing: 2px;
     }
 
     p {
-      font-size: 1.25rem;
-      margin-bottom: 30px;
-      max-width: 90%;
-      text-shadow: 0 0 10px #000;
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 6px #000;
     }
 
-    .btn-container {
+    .button-group {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
     }
 
-    .btn-container a {
-      text-decoration: none;
+    .button-group a {
+      display: inline-block;
       background: linear-gradient(to right, #990000, #f43f5e);
       color: white;
-      padding: 15px 30px;
-      border-radius: 30px;
-      font-size: 1.2rem;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
       font-weight: bold;
-      transition: background 0.3s ease;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      font-size: 1rem;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
 
-    .btn-container a:hover {
+    .button-group a:hover {
       background: linear-gradient(to right, #f43f5e, #3b82f6);
+      transform: scale(1.05);
     }
 
     footer {
       position: absolute;
       bottom: 20px;
       font-size: 0.9rem;
-      text-shadow: 0 0 10px #000;
+      color: #ccc;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      p {
+        font-size: 1rem;
+        padding: 0 20px;
+      }
+
+      .button-group a {
+        font-size: 0.95rem;
+        padding: 12px 20px;
+      }
     }
   </style>
-  <script>
-    // Redirect on drop date (adjust to your exact date/time in UTC)
-    const dropDate = new Date("2025-08-24T04:00:00Z").getTime();
-    const now = new Date().getTime();
-
-    if (now >= dropDate) {
-      window.location.href = "index.html"; // Change to your main homepage
-    }
-  </script>
 </head>
 <body>
-  <h1>Something Big is Coming</h1>
-  <p>Weirdo Gang’s official site drops with the album. Until then, ride with us. Tap in.</p>
-  <div class="btn-container">
-    <a href="https://your-presave-link.com" target="_blank">Pre-Save Now</a>
-    <a href="https://your-newsletter-signup-link.com" target="_blank">Join the Newsletter</a>
+
+  <!-- 🔻 Main Gate Message -->
+  <h1>#GangRelated</h1>
+  <p>Weirdo Gang’s debut album is almost here. Pre-save it now and join the gang for exclusive updates.</p>
+
+  <!-- 🔻 CTA Buttons -->
+  <div class="button-group">
+    <a href="https://your-presave-link.com" target="_blank">🎧 Pre-Save Now</a>
+    <a href="https://your-newsletter-signup.com" target="_blank">📬 Join the Newsletter</a>
   </div>
-  <footer>Full site unlocks on drop day. Get ready.</footer>
+
+  <footer>Full website drops on August 24.</footer>
+
+  <!-- 🔁 Redirect on drop day -->
+  <script>
+    const dropDate = new Date("2025-08-24T00:00:00");
+    const now = new Date();
+    if (now >= dropDate) {
+      window.location.href = "home.html";
+    }
+  </script>
+
 </body>
 </html>
