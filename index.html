@@ -5,68 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>#GangRelated – Coming Soon</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
       padding: 0;
       font-family: 'Montserrat', sans-serif;
       color: white;
-      background-color: black;
+      height: 100vh;
       overflow: hidden;
+      background: #000;
     }
 
-    .intro-video {
+    #intro-video {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
       object-fit: cover;
-      z-index: 1;
+      z-index: 9999;
+      display: none;
     }
 
-    .enter-button {
-      position: fixed;
+    #enter-button {
+      position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       background: #f43f5e;
+      color: white;
       padding: 16px 32px;
-      font-size: 1.2rem;
-      font-weight: bold;
       border: none;
       border-radius: 8px;
+      font-size: 1.5rem;
+      font-weight: bold;
       cursor: pointer;
       z-index: 2;
-      transition: background 0.3s ease;
     }
 
-    .enter-button:hover {
+    #enter-button:hover {
       background: #990000;
     }
 
-    .gate-content {
+    #gate-content {
       display: none;
+      position: relative;
+      background: url('images/gangrelated-cover.jpg') no-repeat center center fixed;
+      background-size: 70%;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      padding: 20px;
-      background: url('images/gangrelated-cover.jpg') no-repeat center center fixed;
-      background-size: 70%;
-      backdrop-filter: brightness(0.6);
-      z-index: 3;
+      opacity: 0;
+      transition: opacity 2s ease;
     }
 
-    .gate-content p {
+    #gate-content.show-gate {
+      display: flex;
+      opacity: 1;
+    }
+
+    #gate-content p {
       font-size: 1.2rem;
       max-width: 500px;
       margin-bottom: 2rem;
@@ -97,7 +98,7 @@
     }
 
     @media (max-width: 768px) {
-      .gate-content {
+      #gate-content {
         background-size: cover;
       }
     }
@@ -105,42 +106,46 @@
 </head>
 <body>
 
-  <!-- 🔥 INTRO VIDEO -->
-  <video class="intro-video" id="introVideo" autoplay playsinline preload="auto">
-    <source src="images/gangrelated-intro.mp4" type="video/mp4">
+  <video id="intro-video" autoplay playsinline>
+    <source src="images/gangrelated-teaser.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 
-  <!-- 🎯 CLICK TO ENTER BUTTON -->
-  <button class="enter-button" onclick="enterSite()">Enter Site</button>
+  <button id="enter-button">Enter Site</button>
 
-  <!-- 🚪 GATE CONTENT AFTER VIDEO -->
-  <div class="gate-content" id="gateContent">
+  <div id="gate-content">
     <p>Our debut album is almost here. Pre-save now and join the gang to stay locked in.</p>
-
     <div class="button-group">
       <a href="https://your-presave-link.com" target="_blank">Pre-Save Now</a>
-      <a href="#" onclick="openNewsletterPopup()">Join the Newsletter</a>
+      <a href="https://formspree.io/f/meoadvab" target="_blank">Join the Newsletter</a>
     </div>
-
     <footer>
       Full site launching on drop day.
     </footer>
   </div>
 
-  <!-- ✨ Newsletter popup placeholder -->
   <script>
-    function openNewsletterPopup() {
-      window.open('https://formspree.io/f/meoadvab', '_blank');
-    }
+    const enterButton = document.getElementById("enter-button");
+    const introVideo = document.getElementById("intro-video");
+    const gateContent = document.getElementById("gate-content");
 
-    function enterSite() {
-      const video = document.getElementById('introVideo');
-      const gate = document.getElementById('gateContent');
-      video.style.display = 'none';
-      document.querySelector('.enter-button').style.display = 'none';
-      gate.style.display = 'flex';
-    }
+    enterButton.addEventListener("click", () => {
+      enterButton.style.display = "none";
+      introVideo.style.display = "block";
+      introVideo.play();
+
+      introVideo.addEventListener("ended", () => {
+        introVideo.style.display = "none";
+        gateContent.classList.add("show-gate");
+      });
+
+      setTimeout(() => {
+        if (!gateContent.classList.contains("show-gate")) {
+          introVideo.style.display = "none";
+          gateContent.classList.add("show-gate");
+        }
+      }, 12000);
+    });
 
     const dropDate = new Date("2025-08-24T00:00:00");
     const now = new Date();
