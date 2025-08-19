@@ -2,82 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>#GangRelated – Coming Soon</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
+    body {
       margin: 0;
       padding: 0;
-      height: 100%;
-      font-family: 'Montserrat', sans-serif;
-      background-color: black;
-      color: white;
-    }
-
-    /* Intro wrapper */
-    #introWrapper {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: black;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      transition: opacity 0.6s ease;
-    }
-
-    #introWrapper.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    #enterBtn {
-      background: #f43f5e;
-      color: white;
-      padding: 16px 32px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      z-index: 1001;
-    }
-
-    #enterBtn:hover {
-      background: #990000;
-    }
-
-    #introVideo {
-      display: none;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-    }
-
-    #mainGate {
-      display: none;
       background: url('images/gangrelated-cover.jpg') no-repeat center center fixed;
       background-size: 70%;
-      height: 100vh;
-      width: 100%;
+      background-color: black;
+      font-family: 'Montserrat', sans-serif;
+      color: white;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      height: 100vh;
       text-align: center;
       backdrop-filter: brightness(0.6);
     }
 
-    #mainGate p {
+    p {
       font-size: 1.2rem;
       max-width: 500px;
       margin-bottom: 2rem;
@@ -100,70 +45,79 @@
       background: #990000;
     }
 
+    form {
+      max-width: 400px;
+      margin: 0 auto 2rem auto;
+      width: 90%;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      text-shadow: 0 0 6px #000;
+    }
+
+    form input[type="email"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    form button {
+      background: #f43f5e;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background: #990000;
+    }
+
     footer {
       position: absolute;
       bottom: 20px;
       font-size: 0.8rem;
       color: #ccc;
     }
-
-    @media (max-width: 768px) {
-      #mainGate {
-        background-size: cover;
-      }
-    }
   </style>
 </head>
 <body>
-  <!-- Intro Section -->
-  <div id="introWrapper">
-    <button id="enterBtn">Enter Site</button>
-    <video id="introVideo" playsinline preload="auto">
-      <source src="images/gangrelated-intro.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+
+  <!-- 🔻 Main message -->
+  <p>Our debut album is almost here. Pre-save now and join the gang to stay locked in.</p>
+
+  <!-- 🔻 Button for Pre-Save -->
+  <div class="button-group">
+    <a href="https://your-presave-link.com" target="_blank">Pre-Save Now</a>
   </div>
 
-  <!-- Main Gate -->
-  <div id="mainGate">
-    <p>Our debut album is almost here. Pre-save now and join the gang to stay locked in.</p>
-    <div class="button-group">
-      <a href="https://your-presave-link.com" target="_blank">Pre-Save Now</a>
-      <a href="#" onclick="openNewsletterPopup()">Join the Newsletter</a>
-    </div>
-    <footer>Full site launching on drop day.</footer>
-  </div>
+  <!-- 🔻 Newsletter signup form (Formspree embed) -->
+  <form action="https://formspree.io/f/meoadvab" method="POST">
+    <label for="email">Join the Newsletter</label>
+    <input 
+      type="email" 
+      name="email" 
+      id="email" 
+      required 
+      placeholder="Enter your email"
+    >
+    <button type="submit">Subscribe</button>
+  </form>
 
-  <!-- Newsletter popup -->
-  <script>
-    function openNewsletterPopup() {
-      window.open('https://formspree.io/f/meoadvab', '_blank');
-    }
-  </script>
+  <footer>
+    Full site launching on drop day.
+  </footer>
 
-  <!-- Video Transition Logic -->
-  <script>
-    const enterBtn = document.getElementById("enterBtn");
-    const introWrapper = document.getElementById("introWrapper");
-    const introVideo = document.getElementById("introVideo");
-    const mainGate = document.getElementById("mainGate");
-
-    enterBtn.addEventListener("click", () => {
-      enterBtn.style.display = "none";
-      introVideo.style.display = "block";
-      introVideo.play();
-    });
-
-    introVideo.addEventListener("ended", () => {
-      introWrapper.classList.add("hidden");
-      setTimeout(() => {
-        introWrapper.style.display = "none";
-        mainGate.style.display = "flex";
-      }, 600);
-    });
-  </script>
-
-  <!-- Optional redirect to homepage on drop day -->
+  <!-- 🔒 Redirect script for launch day -->
   <script>
     const dropDate = new Date("2025-08-24T00:00:00");
     const now = new Date();
@@ -171,5 +125,6 @@
       window.location.href = "home.html";
     }
   </script>
+
 </body>
 </html>
