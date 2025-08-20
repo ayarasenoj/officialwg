@@ -29,6 +29,26 @@
       text-shadow: 0 0 6px #000;
     }
 
+    .countdown {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 10px #000;
+      display: flex;
+      gap: 20px;
+    }
+
+    .countdown div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .countdown span {
+      font-size: 1rem;
+      margin-top: 5px;
+    }
+
     .button-group a {
       display: inline-block;
       background: #f43f5e;
@@ -93,14 +113,22 @@
 <body>
 
   <!-- 🔻 Main message -->
-  <p>Our debut album is almost here. Pre-save now and join the gang to stay locked in.</p>
+  <p>Our debut album is almost here. Pre-save link coming soon. Sign up to stay locked in.</p>
+
+  <!-- 🔻 Countdown Timer -->
+  <div class="countdown" id="countdown">
+    <div><div id="days">00</div><span>Days</span></div>
+    <div><div id="hours">00</div><span>Hours</span></div>
+    <div><div id="minutes">00</div><span>Minutes</span></div>
+    <div><div id="seconds">00</div><span>Seconds</span></div>
+  </div>
 
   <!-- 🔻 Button for Pre-Save -->
   <div class="button-group">
-    <a href="https://your-presave-link.com" target="_blank">Pre-Save Now</a>
+    <a href="#" onclick="return false;">Pre-save Link Coming Soon</a>
   </div>
 
-  <!-- 🔻 Newsletter signup form (Formspree embed) -->
+  <!-- 🔻 Newsletter signup form -->
   <form action="https://formspree.io/f/meoadvab" method="POST">
     <label for="email">Join the Newsletter</label>
     <input 
@@ -119,11 +147,37 @@
 
   <!-- 🔒 Redirect script for launch day -->
   <script>
-    const dropDate = new Date("2025-08-24T00:00:00");
+    const dropDate = new Date("2025-08-25T00:00:00");
     const now = new Date();
     if (now >= dropDate) {
       window.location.href = "home.html";
     }
+  </script>
+
+  <!-- 🔄 Countdown Timer Script -->
+  <script>
+    const countdown = () => {
+      const end = new Date("2025-08-25T00:00:00").getTime();
+      const now = new Date().getTime();
+      const distance = end - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = days.toString().padStart(2, '0');
+      document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+      document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+      document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+
+      if (distance < 0) {
+        document.getElementById("countdown").innerHTML = "Album is out now!";
+      }
+    };
+
+    setInterval(countdown, 1000);
+    countdown();
   </script>
 
 </body>
