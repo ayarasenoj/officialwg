@@ -110,6 +110,61 @@
       color: #ccc;
     }
 
+    .events {
+  margin-top: 3rem;
+  padding: 0 20px;
+}
+
+.events h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 6px #000;
+}
+
+.event-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.flyer {
+  position: relative;
+  width: 150px; /* About 1.5 inch */
+  height: auto;
+  max-width: 90%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+.flyer img {
+  width: 100%;
+  height: auto;
+  max-height: 150px; /* Contain height too */
+  display: block;
+  transition: opacity 0.5s ease, transform 0.3s ease;
+  object-fit: contain;
+}
+
+
+.flyer .hover-flyer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 2;
+}
+
+.flyer:hover .hover-flyer {
+  opacity: 1;
+}
+
+.flyer:hover .main-flyer {
+  opacity: 0;
+  transform: scale(1.02);
+}
+
   </style>
 </head>
 <body>
@@ -144,6 +199,24 @@
     >
     <button type="submit">Subscribe</button>
   </form>
+
+  <!-- 🔻 Upcoming Events Section -->
+<section class="events">
+  <h2>Upcoming Events</h2>
+
+  <div class="event-grid">
+    <!-- AOU Flyer with Hover -->
+    <div class="flyer">
+      <img src="images/aou.jpeg" alt="AOU Tour Flyer" class="main-flyer" />
+      <img src="images/aouschedule.jpeg" alt="AOU Schedule" class="hover-flyer" />
+    </div>
+
+    <!-- Richfest Static Flyer -->
+    <div class="flyer">
+      <img src="images/richfest.jpeg" alt="Richfest Flyer" />
+    </div>
+  </div>
+</section>
 
   <footer>
     Full site launching on drop day.
