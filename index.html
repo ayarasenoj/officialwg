@@ -130,7 +130,8 @@
 
 .flyer {
   position: relative;
-  width: 300px;
+  width: 150px; /* About 1.5 inch */
+  height: auto;
   max-width: 90%;
   border-radius: 10px;
   overflow: hidden;
@@ -139,9 +140,13 @@
 
 .flyer img {
   width: 100%;
+  height: auto;
+  max-height: 150px; /* Contain height too */
   display: block;
   transition: opacity 0.5s ease, transform 0.3s ease;
+  object-fit: contain;
 }
+
 
 .flyer .hover-flyer {
   position: absolute;
