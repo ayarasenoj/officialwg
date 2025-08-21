@@ -109,6 +109,57 @@
       font-size: 0.8rem;
       color: #ccc;
     }
+
+    .events {
+  margin-top: 3rem;
+  padding: 0 20px;
+}
+
+.events h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 6px #000;
+}
+
+.event-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.flyer {
+  position: relative;
+  width: 300px;
+  max-width: 90%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+.flyer img {
+  width: 100%;
+  display: block;
+  transition: opacity 0.5s ease, transform 0.3s ease;
+}
+
+.flyer .hover-flyer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 2;
+}
+
+.flyer:hover .hover-flyer {
+  opacity: 1;
+}
+
+.flyer:hover .main-flyer {
+  opacity: 0;
+  transform: scale(1.02);
+}
+
   </style>
 </head>
 <body>
