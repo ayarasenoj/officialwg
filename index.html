@@ -470,6 +470,46 @@
 .flyer-hover:hover img:first-child {
   opacity: 0;
 }
+
+.album-release {
+  text-align: center;
+  margin: 2rem auto;
+  padding: 1rem;
+  max-width: 500px;
+}
+
+.album-release h2 {
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 6px #000;
+}
+
+.album-art {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  margin-bottom: 1rem;
+}
+
+.stream-button {
+  display: inline-block;
+  background-color: #f43f5e;
+  color: white;
+  font-weight: bold;
+  padding: 14px 24px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.stream-button:hover {
+  background-color: #990000;
+  transform: scale(1.05);
+}
   </style>
 </head>
 <body>
@@ -502,6 +542,13 @@
   <a href="https://music.apple.com/us/artist/weirdo-gang/1707622143" target="_blank"><img src="images/apple.png" alt="Apple Music"></a>
   <a href="https://open.spotify.com/artist/1mOX3aTOjDVKePTIhYLJF2" target="_blank"><img src="images/spotify.png" alt="Spotify"></a>
 </div>
+
+<!-- 🔻 GangRelated Album Promo Section -->
+<section class="album-release">
+  <h2>#GangRelated Album – Out Now</h2>
+  <img src="images/gangrelated-cover.jpg" alt="GangRelated Album Cover" class="album-art">
+  <a href="https://ffm.to/wolwvl4" target="_blank" class="stream-button">🎧 Stream Here</a>
+</section>
 
 
     <div class="poster-buttons mobile-only">
