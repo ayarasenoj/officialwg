@@ -511,9 +511,104 @@
   background-color: #990000;
   transform: scale(1.05);
 }
+    /* 🔘 Hamburger Button Style */
+.mobile-menu-button {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1001;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mobile-menu-button div {
+  width: 28px;
+  height: 3px;
+  background-color: white;
+  transition: 0.3s;
+}
+
+/* 📋 Sidebar Menu Style */
+.mobile-sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.4s;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+.mobile-sidebar .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 36px;
+  color: white;
+  cursor: pointer;
+}
+
+.mobile-sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.mobile-sidebar ul li {
+  margin: 20px 0;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.mobile-sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.2s;
+}
+
+.mobile-sidebar ul li a:hover {
+  color: #f43f5e;
+}
+
+/* 📱 Mobile-Only Display */
+@media (max-width: 768px) {
+  .mobile-menu-button {
+    display: flex;
+  }
+
+  nav.desktop-nav {
+    display: none; /* Hide your normal nav bar on mobile if needed */
+  }
+}
+
   </style>
 </head>
 <body>
+
+  <!-- 🔘 Hamburger Menu Button (Mobile Only) -->
+<div class="mobile-menu-button" onclick="toggleMenu()">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<!-- 📋 Slide-Out Sidebar Menu -->
+<nav id="mobileSidebar" class="mobile-sidebar">
+  <span class="close-btn" onclick="toggleMenu()">&times;</span>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="music.html">Music & Videos</a></li>
+    <li><a href="gang.html">Meet the Gang</a></li>
+    <li><a href="tour.html">Tour</a></li>
+    <!-- Add more as needed -->
+  </ul>
+</nav>
+
 
   <div class="concert-lights">
     <div class="light white"></div>
@@ -677,6 +772,17 @@
       alert("There was a network error. Please try again.");
     }
   });
+</script>
+
+    <script>
+  function toggleMenu() {
+    const sidebar = document.getElementById("mobileSidebar");
+    if (sidebar.style.width === "250px") {
+      sidebar.style.width = "0";
+    } else {
+      sidebar.style.width = "250px";
+    }
+  }
 </script>
 
 </body>
