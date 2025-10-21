@@ -179,37 +179,6 @@
       to { transform: rotate(25deg) translateX(200%); }
     }
 
-    .poster-buttons {
-      position: relative;
-      height: 700px;
-      width: 100%;
-    }
-
-    .poster-buttons a {
-      position: absolute;
-    }
-
-    .poster-buttons img {
-      width: 280px;
-      height: auto;
-      border-radius: 6px;
-      box-shadow:
-        0 0 25px rgba(255, 255, 255, 0.05),
-        0 8px 30px rgba(255, 0, 0, 0.08);
-      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.05));
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .poster-buttons img:hover {
-      transform: scale(1.05) rotate(1deg);
-      box-shadow:
-        0 0 35px rgba(255, 255, 255, 0.1),
-        0 12px 40px rgba(255, 0, 0, 0.15);
-    }
-
-    .poster-large {
-      width: 380px;
-    }
 
     footer {
       background: #000;
@@ -257,30 +226,6 @@
       opacity: 0;
     }
 
-    @media (max-width: 768px) {
-      .poster-buttons {
-        position: static;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
-        padding: 20px;
-      }
-
-      .poster-buttons a {
-        position: static !important;
-        transform: none !important;
-        top: auto !important;
-        bottom: auto !important;
-        left: auto !important;
-        right: auto !important;
-        margin: 0 !important;
-      }
-
-      .poster-buttons img {
-        width: 85%;
-        max-width: 340px;
-      }
 
       header {
         display: flex;
@@ -647,25 +592,7 @@
 </section>
 
 
-    <div class="poster-buttons mobile-only">
 
-      <a href="music.html" style="top: 40px; right: 10%;">
-        <img src="images/music-poster.png" alt="Music & Videos Poster" class="poster-large" />
-      </a>
-     
-      <a href="index.html#tour" style="top: 40px; left: 12%;">
-        <img src="images/shows-poster.png" alt="Upcoming Shows Poster" />
-      </a>
-      
-      <a href="gang.html" style="bottom: 20px; left: 12%;">
-  <img src="images/gang-poster.png" alt="Meet the Gang Poster" />
-</a>
-
-      <a href="https://weirdogang.net" target="_blank" style="bottom: 40px; right: 10%;">
-  <img src="images/apparel.png" alt="Weirdo Gang Apparel Poster" />
-</a>
-
-    </div>
   </header>
 
   <section id="about" class="section-dark">
